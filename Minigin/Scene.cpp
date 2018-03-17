@@ -13,11 +13,11 @@ void dae::Scene::Add(const std::shared_ptr<SceneObject>& object)
 	mObjects.push_back(object);
 }
 
-void dae::Scene::Update()
+void dae::Scene::Update(float elapsedSec)
 {
 	for(auto gameObject : mObjects)
 	{
-		gameObject->Update();
+		gameObject->Update(elapsedSec);
 	}
 }
 

@@ -28,7 +28,7 @@ void dae::TextObject::Update(float elapsedSec)
 			throw std::runtime_error(ss.str().c_str());
 		}
 		SDL_FreeSurface(surf);
-		mTexture = std::make_shared<Texture2D>(texture);
+		mTexture = texture;
 	}
 }
 

@@ -29,6 +29,10 @@ namespace dae
 
 	void GameObject::Render() const
 	{
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->Render();
+		}
 	}
 
 	void GameObject::AddComponent(BaseComponent * pComp)
@@ -50,8 +54,3 @@ namespace dae
 	}
 }
 
-
-//TransformComponent * GameObject::GetTransform() const
-//{
-//	return m_pTransform;
-//}

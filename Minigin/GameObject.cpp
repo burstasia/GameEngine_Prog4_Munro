@@ -2,23 +2,55 @@
 #include "GameObject.h"
 #include "ResourceManager.h"
 #include "Renderer.h"
-
-dae::GameObject::~GameObject() = default;
-
-void dae::GameObject::Update(){}
-
-void dae::GameObject::Render() const
+#include "./Components/TransformComponent.h"
+#include "./Components/BaseComponent.h"
+namespace dae
 {
-	auto pos = mTransform.GetPosition();
-	Renderer::GetInstance().RenderTexture(*mTexture, pos.x, pos.y);
+	GameObject::~GameObject()
+	{
+		//delte components
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			if (pComp != 0)
+			{
+				delete(pComp);
+				pComp = 0;
+			}
+		}
+	}
+
+	void GameObject::Update(float elapsedSec)
+	{
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->Update(elapsedSec);
+		}
+	}
+
+	void GameObject::Render() const
+	{
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->Render();
+		}
+	}
+
+	void GameObject::AddComponent(BaseComponent * pComp)
+	{
+		m_pComponents.push_back(pComp);
+		pComp->m_pGameObject = this;
+	}
+
+	void GameObject::RemoveComponent(BaseComponent * pComp)
+	{
+		auto it = find(m_pComponents.begin(), m_pComponents.end(), pComp);
+		m_pComponents.erase(it);
+		pComp->m_pGameObject = nullptr;
+	}
+
+	TransformComponent * GameObject::GetTransform() const
+	{
+		return m_pTransform;
+	}
 }
 
-void dae::GameObject::SetTexture(const std::string& filename)
-{
-	mTexture = dae::ResourceManager::GetInstance().LoadTexture(filename);
-}
-
-void dae::GameObject::SetPosition(float x, float y)
-{
-	mTransform.SetPosition(x, y, 0.0f);
-}

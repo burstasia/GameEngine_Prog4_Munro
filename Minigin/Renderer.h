@@ -3,7 +3,7 @@
 
 struct SDL_Window;
 struct SDL_Renderer;
-
+struct SDL_Texture;
 namespace dae
 {
 	class Texture2D;
@@ -16,8 +16,8 @@ namespace dae
 		void Render();
 		void Destroy();
 
-		void RenderTexture(const Texture2D& texture, float x, float y) const;
-		void RenderTexture(const Texture2D& texture, float x, float y, float width, float height) const;
+		void RenderTexture(SDL_Texture& texture, float x, float y) const;
+		void RenderTexture(SDL_Texture& texture, float x, float y, float width, float height) const;
 
 		SDL_Renderer* GetSDLRenderer() const { return mRenderer; }
 	};

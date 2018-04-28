@@ -3,11 +3,11 @@
 #include "Scene.h"
 
 
-void dae::SceneManager::Update()
+void dae::SceneManager::Update(float elapsedSec)
 {
 	for(auto scene : mScenes)
 	{
-		scene->Update();
+		scene->Update(elapsedSec);
 	}
 }
 

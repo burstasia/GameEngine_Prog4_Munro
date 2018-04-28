@@ -11,8 +11,9 @@ dae::TextObject::TextObject(const std::string& text, std::shared_ptr<Font> font)
 	: mNeedsUpdate(true), mText(text), mFont(font), mTexture(nullptr)
 { }
 
-void dae::TextObject::Update()
+void dae::TextObject::Update(float elapsedSec)
 {
+	UNREFERENCED_PARAMETER(elapsedSec);
 	if (mNeedsUpdate)
 	{
 		const SDL_Color color = { 255,255,255 }; // only white text is supported now
@@ -27,7 +28,7 @@ void dae::TextObject::Update()
 			throw std::runtime_error(ss.str().c_str());
 		}
 		SDL_FreeSurface(surf);
-		mTexture = std::make_shared<Texture2D>(texture);
+		mTexture = texture;
 	}
 }
 

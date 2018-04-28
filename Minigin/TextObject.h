@@ -1,7 +1,7 @@
 #pragma once
 #include "SceneObject.h"
 #include "Transform.h"
-
+struct SDL_Texture;
 namespace dae
 {
 	class Font;
@@ -10,7 +10,7 @@ namespace dae
 	class TextObject : public SceneObject
 	{
 	public:
-		void Update() override;
+		void Update(float elapsedSec) override;
 		void Render() const override;
 
 		void SetText(const std::string& text);
@@ -30,7 +30,7 @@ namespace dae
 		std::string mText;
 		Transform mTransform;
 		std::shared_ptr<Font> mFont;
-		std::shared_ptr<Texture2D> mTexture;
+		SDL_Texture* mTexture;
 	};
 
 }

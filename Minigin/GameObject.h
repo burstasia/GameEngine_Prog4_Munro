@@ -5,16 +5,23 @@
 #include "Texture2D.h"
 #include "SceneObject.h"
 
+
 namespace dae
 {
+
+	class BaseComponent;
+	class TransformComponent;
+
 	class GameObject : public SceneObject
 	{
 	public:
-		void Update() override;
+		void Update(float elapsedSec) override;
 		void Render() const override;
 
-		void SetTexture(const std::string& filename);
-		void SetPosition(float x, float y);
+		void AddComponent(BaseComponent* pComp);
+		void RemoveComponent(BaseComponent* pComp);
+
+		TransformComponent* GetTransform() const;
 
 		GameObject() = default;
 		virtual ~GameObject();
@@ -24,7 +31,19 @@ namespace dae
 		GameObject& operator=(GameObject&& other) = delete;
 
 	private:
-		Transform mTransform;
-		std::shared_ptr<Texture2D> mTexture;
+		TransformComponent* m_pTransform;
+
+		//I choose to use a vector of BaseComponents because if I were to create
+		//a set amount of components in a GameObject class such as:
+		//InputComponent* input;
+		//PhysicsComponent* physics;
+		//GraphicsComponent* graphics;
+
+		//then i would be bound to having these components in my game object class
+		//and if I don't want a graphics component (for example) 
+		//then I would be forced to set it to a nullptr 
+		//which I think is worse than having a vector of components that inherit 
+		//from BaseComponent
+		std::vector<BaseComponent*> m_pComponents;
 	};
 }

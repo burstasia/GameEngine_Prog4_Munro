@@ -19,9 +19,9 @@ namespace dae
 		TextureComponent & operator= (const TextureComponent &) = delete;
 		TextureComponent & operator= (const TextureComponent &&) = delete;
 	protected:
-		virtual void Init();
-		virtual void Update(float elapsedSec);
-		virtual void Render();
+		virtual void Init()override;
+		virtual void Update(float elapsedSec)override;
+		virtual void Render() override;
 
 	private:
 		SDL_Texture * m_Texture;

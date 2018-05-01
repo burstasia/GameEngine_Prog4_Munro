@@ -6,6 +6,10 @@
 #include "./Components/BaseComponent.h"
 namespace dae
 {
+	GameObject::GameObject()
+	{
+		m_Transform.m_pGameObject = this;
+	}
 	GameObject::~GameObject()
 	{
 		//delte components
@@ -48,9 +52,9 @@ namespace dae
 		pComp->m_pGameObject = nullptr;
 	}
 
-	TransformComponent * GameObject::GetTransform() const
+	TransformComponent* GameObject::GetTransform()
 	{
-		return m_pTransform;
+		return &m_Transform;
 	}
 }
 

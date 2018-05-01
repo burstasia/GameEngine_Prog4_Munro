@@ -49,6 +49,10 @@ namespace dae
 	void TextComponent::Update(float elapsedSec)
 	{
 		UNREFERENCED_PARAMETER(elapsedSec);
+
+		m_PosX = m_pGameObject->GetTransform()->GetPosition().x;
+		m_PosY = m_pGameObject->GetTransform()->GetPosition().y;
+
 	}
 	void TextComponent::Render()
 	{

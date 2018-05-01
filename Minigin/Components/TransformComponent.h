@@ -13,6 +13,9 @@ namespace dae
 	public:
 		TransformComponent(void);
 		virtual ~TransformComponent();
+		virtual void Update(float elapsedSec) override;
+		virtual void Render() override;
+		virtual void Init() override;
 
 		const glm::vec3& GetPosition() const;
 		void SetPosition(float x, float y, float z);

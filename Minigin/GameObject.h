@@ -4,6 +4,7 @@
 #include "Transform.h"
 #include "Texture2D.h"
 #include "SceneObject.h"
+#include "./Components/TransformComponent.h"
 
 
 namespace dae
@@ -21,9 +22,9 @@ namespace dae
 		void AddComponent(BaseComponent* pComp);
 		void RemoveComponent(BaseComponent* pComp);
 
-		TransformComponent* GetTransform() const;
+		TransformComponent* GetTransform();
 
-		GameObject() = default;
+		GameObject();
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;
@@ -31,7 +32,7 @@ namespace dae
 		GameObject& operator=(GameObject&& other) = delete;
 
 	private:
-		TransformComponent* m_pTransform;
+		TransformComponent m_Transform;
 
 		//I choose to use a vector of BaseComponents because if I were to create
 		//a set amount of components in a GameObject class such as:

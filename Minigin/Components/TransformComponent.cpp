@@ -4,11 +4,26 @@
 
 namespace dae
 {
-	TransformComponent::TransformComponent(void)
+	TransformComponent::TransformComponent(void):
+		BaseComponent()
 	{
+		m_Position = glm::vec3(0, 0, 0);
 	}
 
 	TransformComponent::~TransformComponent()
+	{
+	}
+
+	void TransformComponent::Update(float elapsedSec)
+	{
+		UNREFERENCED_PARAMETER(elapsedSec);
+	}
+
+	void TransformComponent::Render()
+	{
+	}
+
+	void TransformComponent::Init()
 	{
 	}
 

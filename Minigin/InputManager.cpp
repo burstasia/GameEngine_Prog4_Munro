@@ -16,6 +16,9 @@ bool dae::InputManager::ProcessInput()
 		if (e.type == SDL_KEYDOWN) {
 			m_Key[e.key.keysym.sym] = true;
 		}
+		if (e.type == SDL_KEYUP) {
+			m_Key[e.key.keysym.sym] = false;
+		}
 		if (e.type == SDL_MOUSEBUTTONDOWN) {
 			m_Key[e.key.keysym.sym] = false;
 		}
@@ -52,10 +55,22 @@ bool dae::InputManager::IsPressed(ControllerButton button) const
 Command * dae::InputManager::HandleInput()
 {
 	//keyboard support
-	if (m_Key[SDLK_w]) return m_pUp;
-	if (m_Key[SDLK_s]) return m_pDown;
-	if (m_Key[SDLK_a]) return m_pLeft;
-	if (m_Key[SDLK_d]) return m_pRight;
+	if (m_Key[SDLK_w])
+	{
+		return m_pUp;
+	}
+	if (m_Key[SDLK_s])
+	{
+		return m_pDown;
+	}
+	if (m_Key[SDLK_a])
+	{
+		return m_pLeft;
+	}
+	if (m_Key[SDLK_d])
+	{
+		return m_pRight;
+	}
 
 	//TODO: controller support
 	return nullptr;

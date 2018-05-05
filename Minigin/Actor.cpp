@@ -20,21 +20,22 @@ void Actor::Update(float elapsedSec)
 	//TODO make helper move function
 	if (m_Direction == 0) // UP
 	{
-		GetTransform()->SetPosition(0.0f, (elapsedSec * m_Speed), 0.0f);
+		GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * m_Speed), 0.0f);
 	}
 	else if (m_Direction == 1) // DOWN
 	{
-		GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * m_Speed), 0.0f);
+		GetTransform()->SetPosition(0.0f,  (elapsedSec * m_Speed), 0.0f);
 	}
-	else if (m_Direction == 2) // RIGHT
+	else if (m_Direction == 2) // LEFT
 	{
-		GetTransform()->SetPosition((elapsedSec * m_Speed), 0.0f , 0.0f);
+		GetTransform()->SetPosition(-1.0f *(elapsedSec * m_Speed), 0.0f , 0.0f);
 	}
-	else if (m_Direction == 3) // LEFT
+	else if (m_Direction == 3) // RIGHT
 	{
-		GetTransform()->SetPosition(-1.0f * (elapsedSec * m_Speed), 0.0f, 0.0f);
+		GetTransform()->SetPosition(((elapsedSec * m_Speed)), 0.0f, 0.0f);
 	}
 
+	GameObject::Update(elapsedSec);
 }
 
 void Actor::SetDirection(const Direc direction)

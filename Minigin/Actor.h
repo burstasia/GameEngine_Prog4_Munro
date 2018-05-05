@@ -15,7 +15,7 @@ public:
 	Actor();
 	~Actor();
 
-	void Update(float elapsedSec);
+	void Update(float elapsedSec) override;
 	void SetDirection(const Direc direction);
 
 private:

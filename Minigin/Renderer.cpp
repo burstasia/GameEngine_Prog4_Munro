@@ -52,11 +52,14 @@ void dae::Renderer::RenderTexture(SDL_Texture& texture, const float x, const flo
 
 void dae::Renderer::RenderTexture(SDL_Texture& texture, float x, float y, int width, int height, float srcX, float srcY, int srcWidth, int srcHeight) const
 {
+	UNREFERENCED_PARAMETER(width);
+	UNREFERENCED_PARAMETER(height);
+
 	SDL_Rect dst;
 	dst.x = static_cast<int>(x);
 	dst.y = static_cast<int>(y);
-	dst.w = static_cast<int>(width);
-	dst.h = static_cast<int>(height);
+	dst.w = static_cast<int>(32);
+	dst.h = static_cast<int>(32);
 
 	SDL_Rect src;
 	src.x = static_cast<int>(srcX);

@@ -5,7 +5,7 @@
 
 Actor::Actor():
 	m_Direction(Direc::left),
-	m_Speed(10.0f)
+	m_Speed(50.0f)
 {
 }
 

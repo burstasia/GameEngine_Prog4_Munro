@@ -26,6 +26,7 @@ namespace dae
 		Direc m_Direction;
 		float m_Speed;
 
+		int temp;
 	};
 }
 

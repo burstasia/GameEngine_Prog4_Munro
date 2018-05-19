@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include "Level.h"
 
 using json = nlohmann::json;
 
@@ -16,7 +17,7 @@ dae::LevelLoader::~LevelLoader()
 {
 }
 
-bool dae::LevelLoader::LoadLevel(const std::string & filepath)
+dae::Level* dae::LevelLoader::LoadLevel(const std::string & filepath)
 {
 	UNREFERENCED_PARAMETER(filepath);
 
@@ -47,8 +48,8 @@ bool dae::LevelLoader::LoadLevel(const std::string & filepath)
 	}
 	
 
-	
+	auto level = new Level(m_Grid, m_Width, m_Height, m_TileSize);
 
 
-	return false;
+	return level;
 }

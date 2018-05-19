@@ -4,6 +4,8 @@
 namespace dae
 {
 	class SceneObject;
+	class Level;
+
 	class Scene
 	{
 		friend Scene& SceneManager::CreateScene(const std::string& name);
@@ -14,6 +16,7 @@ namespace dae
 		void Render() const;
 
 		//getter for level
+		Level* GetLevel() const { return m_pLevel; }
 		//draw level
 		~Scene();
 		Scene(const Scene& other) = delete;
@@ -28,6 +31,8 @@ namespace dae
 		std::vector < std::shared_ptr<SceneObject>> mObjects{};
 
 		//TODO: level memeber var
+		Level * m_pLevel;
+
 		static unsigned int idCounter; 
 	};
 

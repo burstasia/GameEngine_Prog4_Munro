@@ -1,6 +1,8 @@
 #include "MiniginPCH.h"
 #include "Actor.h"
 #include "./Components/TransformComponent.h"
+#include "./Scene.h"
+#include "./Level.h"
 
 namespace dae
 {
@@ -18,11 +20,16 @@ namespace dae
 
 	void Actor::Update(float elapsedSec)
 	{
+		dae::TileType tile = m_pScene.GetLevel()->GetTileType(0.0f, 0.0f);
+
+		
+		temp = tile;
+
 		//TODO make switch instead of if
 		//TODO make helper move function
 		if (m_Direction == 0) // UP
 		{
-			GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * m_Speed), 0.0f);
+			GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * m_Speed), 0.0f );
 		}
 		else if (m_Direction == 1) // DOWN
 		{

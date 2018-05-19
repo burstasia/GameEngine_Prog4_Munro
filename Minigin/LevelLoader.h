@@ -1,13 +1,14 @@
 #pragma once
 namespace dae
 {
+	class Level;
 	class LevelLoader final
 	{
 	public:
 		LevelLoader();
 		~LevelLoader();
 
-		bool LoadLevel(const std::string& filepath);
+		Level* LoadLevel(const std::string& filepath);
 
 	private:
 		int m_TileSize;

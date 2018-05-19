@@ -7,9 +7,11 @@
 #include "./Components/TransformComponent.h"
 
 
+
+
 namespace dae
 {
-
+	class Scene;
 	class BaseComponent;
 	class TransformComponent;
 
@@ -24,7 +26,7 @@ namespace dae
 
 		TransformComponent* GetTransform();
 
-		GameObject();
+		GameObject(const Scene& scene);
 		virtual ~GameObject();
 		GameObject(const GameObject& other) = delete;
 		GameObject(GameObject&& other) = delete;

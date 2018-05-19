@@ -13,6 +13,8 @@ namespace dae
 		void Update(float elapsedSec);
 		void Render() const;
 
+		//getter for level
+		//draw level
 		~Scene();
 		Scene(const Scene& other) = delete;
 		Scene(Scene&& other) = delete;
@@ -25,6 +27,7 @@ namespace dae
 		std::string mName{};
 		std::vector < std::shared_ptr<SceneObject>> mObjects{};
 
+		//TODO: level memeber var
 		static unsigned int idCounter; 
 	};
 

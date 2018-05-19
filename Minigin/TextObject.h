@@ -6,6 +6,7 @@ namespace dae
 {
 	class Font;
 	class Texture2D;
+	class Scene;
 
 	class TextObject : public SceneObject
 	{
@@ -17,7 +18,7 @@ namespace dae
 		void SetPosition(float x, float y);
 
 
-		explicit TextObject(const std::string& text, std::shared_ptr<Font> font);
+		explicit TextObject(const std::string& text, std::shared_ptr<Font> font, const Scene& scene);
 		virtual ~TextObject() = default;
 		TextObject(const TextObject& other) = delete;
 		TextObject(TextObject&& other) = delete;

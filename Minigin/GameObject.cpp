@@ -4,9 +4,11 @@
 #include "Renderer.h"
 #include "./Components/TransformComponent.h"
 #include "./Components/BaseComponent.h"
+#include "Scene.h"
 namespace dae
 {
-	GameObject::GameObject()
+	GameObject::GameObject(const Scene& scene) :
+		SceneObject(scene)
 	{
 		m_Transform.m_pGameObject = this;
 	}

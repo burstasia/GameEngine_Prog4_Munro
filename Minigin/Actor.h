@@ -9,18 +9,24 @@ enum Direc
 	right =3
 
 };
-class Actor: public dae::GameObject
+namespace dae
 {
-public:
-	Actor();
-	~Actor();
+	class Scene;
 
-	void Update(float elapsedSec) override;
-	void SetDirection(const Direc direction);
+	class Actor : public dae::GameObject
+	{
+	public:
+		Actor(const Scene& scene);
+		~Actor();
 
-private:
-	Direc m_Direction;
-	float m_Speed;
+		void Update(float elapsedSec) override;
+		void SetDirection(const Direc direction);
 
-};
+	private:
+		Direc m_Direction;
+		float m_Speed;
+
+	};
+}
+
 

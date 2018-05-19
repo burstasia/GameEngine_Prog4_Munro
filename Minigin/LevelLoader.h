@@ -14,7 +14,7 @@ namespace dae
 		int m_Width;
 		int m_Height;
 
-		std::vector<int> grid;
+		std::vector<int> m_Grid;
 	};
 }
 

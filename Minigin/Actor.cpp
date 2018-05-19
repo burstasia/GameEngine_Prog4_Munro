@@ -2,43 +2,47 @@
 #include "Actor.h"
 #include "./Components/TransformComponent.h"
 
-
-Actor::Actor():
-	m_Direction(Direc::left),
-	m_Speed(50.0f)
+namespace dae
 {
-}
-
-
-Actor::~Actor()
-{
-}
-
-void Actor::Update(float elapsedSec)
-{
-	//TODO make switch instead of if
-	//TODO make helper move function
-	if (m_Direction == 0) // UP
+	Actor::Actor(const Scene& scene) :
+		GameObject(scene),
+		m_Direction(Direc::left),
+		m_Speed(50.0f)
 	{
-		GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * m_Speed), 0.0f);
-	}
-	else if (m_Direction == 1) // DOWN
-	{
-		GetTransform()->SetPosition(0.0f,  (elapsedSec * m_Speed), 0.0f);
-	}
-	else if (m_Direction == 2) // LEFT
-	{
-		GetTransform()->SetPosition(-1.0f *(elapsedSec * m_Speed), 0.0f , 0.0f);
-	}
-	else if (m_Direction == 3) // RIGHT
-	{
-		GetTransform()->SetPosition(((elapsedSec * m_Speed)), 0.0f, 0.0f);
 	}
 
-	GameObject::Update(elapsedSec);
+
+	Actor::~Actor()
+	{
+	}
+
+	void Actor::Update(float elapsedSec)
+	{
+		//TODO make switch instead of if
+		//TODO make helper move function
+		if (m_Direction == 0) // UP
+		{
+			GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * m_Speed), 0.0f);
+		}
+		else if (m_Direction == 1) // DOWN
+		{
+			GetTransform()->SetPosition(0.0f, (elapsedSec * m_Speed), 0.0f);
+		}
+		else if (m_Direction == 2) // LEFT
+		{
+			GetTransform()->SetPosition(-1.0f *(elapsedSec * m_Speed), 0.0f, 0.0f);
+		}
+		else if (m_Direction == 3) // RIGHT
+		{
+			GetTransform()->SetPosition(((elapsedSec * m_Speed)), 0.0f, 0.0f);
+		}
+
+		GameObject::Update(elapsedSec);
+	}
+
+	void Actor::SetDirection(const Direc direction)
+	{
+		m_Direction = direction;
+	}
 }
 
-void Actor::SetDirection(const Direc direction)
-{
-	m_Direction = direction;
-}

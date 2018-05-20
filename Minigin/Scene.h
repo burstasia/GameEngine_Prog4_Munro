@@ -16,6 +16,7 @@ namespace dae
 		void Render() const;
 
 		//getter for level
+		void LoadLevel(const std::string& path);
 		Level* GetLevel() const { return m_pLevel; }
 		//draw level
 		~Scene();

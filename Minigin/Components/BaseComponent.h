@@ -4,6 +4,7 @@
 namespace dae
 {
 	class GameObject;
+	class Level;
 	class TransformComponent;
 
 	class BaseComponent
@@ -24,7 +25,7 @@ namespace dae
 
 	private:
 		friend class GameObject;
-
+		friend class Level;
 	};
 }
 

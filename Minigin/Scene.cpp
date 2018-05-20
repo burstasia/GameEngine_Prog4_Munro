@@ -8,9 +8,7 @@ unsigned int dae::Scene::idCounter = 0;
 
 dae::Scene::Scene(const std::string& name) : mName(name) 
 {
-	auto levelLoader = new LevelLoader();
-
-	m_pLevel = levelLoader->LoadLevel("../Data/level/level.json");
+	
 
 }
 
@@ -38,5 +36,12 @@ void dae::Scene::Render() const
 	}
 
 	m_pLevel->Render();
+}
+
+void dae::Scene::LoadLevel(const std::string & path)
+{
+	auto levelLoader = new LevelLoader();
+
+	m_pLevel = levelLoader->LoadLevel(path);
 }
 

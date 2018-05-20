@@ -30,12 +30,13 @@ void dae::Scene::Update(float elapsedSec)
 
 void dae::Scene::Render() const
 {
+	m_pLevel->Render();
 	for (const auto gameObject : mObjects)
 	{
 		gameObject->Render();
 	}
-
-	m_pLevel->Render();
+	
+	
 }
 
 void dae::Scene::LoadLevel(const std::string & path)

@@ -76,13 +76,37 @@ namespace dae
 				yPos = (i / m_NumTilesVertical) * m_TileSize;
 				xPos = j * m_TileSize;
 
-				m_pComponents.push_back(new TextureComponent("../Data/wall.png", (float)xPos, (float)yPos));
+				int index = i + j;
+				int tileType = m_Grid.at(index);
+
+				switch (tileType)
+				{
+				case 0:
+					m_pComponents.push_back(new TextureComponent("../Data/empty.png", (float)xPos, (float)yPos));
+					break;
+
+				case 1:
+					m_pComponents.push_back(new TextureComponent("../Data/wall.png", (float)xPos, (float)yPos));
+					break;
+
+				case 2:
+					m_pComponents.push_back(new TextureComponent("../Data/pill.png", (float)xPos, (float)yPos));
+					break;
+				}
 			}
 		}
 	}
 
 	Level::~Level()
 	{
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			if (pComp != 0)
+			{
+				delete(pComp);
+				pComp = 0;
+			}
+		}
 	}
 }
 

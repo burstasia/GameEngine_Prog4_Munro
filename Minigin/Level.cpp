@@ -34,6 +34,8 @@ namespace dae
 
 		index += (int)x / m_TileSize;
 
+		if (index < 0) index = 0;
+
 		int type = m_Grid.at(index);
         
 		TileType tile = TileType::empty;

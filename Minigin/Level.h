@@ -1,6 +1,10 @@
 #pragma once
+#include "./Components/BaseComponent.h"
+
 namespace dae
 {
+	class BaseComponent;
+
 	enum TileType
 	{
 		empty = 0,
@@ -27,6 +31,11 @@ namespace dae
 		int m_Width;
 		int m_Height;
 		int m_TileSize;
+
+		int m_NumTilesHorizontal;
+		int m_NumTilesVertical;
+
+		std::vector<BaseComponent*> m_pComponents;
 	};
 }
 

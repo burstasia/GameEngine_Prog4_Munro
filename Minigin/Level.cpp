@@ -1,10 +1,17 @@
 #include "MiniginPCH.h"
 #include "Level.h"
+#include "./Components/TextureComponent.h"
+#include "./Components/BaseComponent.h"
+
 namespace dae
 {
 	void Level::Render() const
 	{
-		//render tiles accordingly
+		for (BaseComponent* pComp : m_pComponents)
+		{
+			pComp->Render();
+		}
+		
 	}
 
 	void Level::Update(float elapsedSec)
@@ -19,17 +26,17 @@ namespace dae
 		//div y by tile size
 		// multiply y with amount of tiles (horizontal)
 		//add x div tile size
-		//we have out index!
+		//we have our index!
 		//return
 
 		int index = (int)y / m_TileSize;
-		index *= m_Width / m_TileSize;
+		index *= m_NumTilesHorizontal;
 
 		index += (int)x / m_TileSize;
 
-		TileType tile = TileType::empty;
-		
 		int type = m_Grid.at(index);
+        
+		TileType tile = TileType::empty;
 
 		switch (type)
 		{
@@ -55,7 +62,23 @@ namespace dae
 		m_Height(height),
 		m_TileSize(tileSize)
 	{
+		m_NumTilesHorizontal = m_Width / m_TileSize;
+		m_NumTilesVertical = m_Height / m_TileSize;
 
+		int yPos{};
+		int xPos{};
+
+		//create tile texture components
+		for (int i = 0; i < m_Grid.size(); i += m_NumTilesHorizontal)
+		{
+			for (int j = 0; j < m_NumTilesHorizontal; j++)
+			{
+				yPos = (i / m_NumTilesVertical) * m_TileSize;
+				xPos = j * m_TileSize;
+
+				m_pComponents.push_back(new TextureComponent("../Data/wall.png", (float)xPos, (float)yPos));
+			}
+		}
 	}
 
 	Level::~Level()

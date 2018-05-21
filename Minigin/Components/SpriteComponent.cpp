@@ -29,6 +29,7 @@ namespace dae
 
 	SpriteComponent::~SpriteComponent()
 	{
+		SDL_DestroyTexture(m_Texture);
 	}
 
 	void SpriteComponent::SetPosition(float x, float y)

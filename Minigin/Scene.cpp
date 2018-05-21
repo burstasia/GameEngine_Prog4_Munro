@@ -12,7 +12,12 @@ dae::Scene::Scene(const std::string& name) : mName(name)
 
 }
 
-dae::Scene::~Scene() = default;
+dae::Scene::~Scene()
+{
+	delete(m_pLevel);
+	m_pLevel = nullptr;
+
+}
 
 void dae::Scene::Add(const std::shared_ptr<SceneObject>& object)
 {

@@ -20,6 +20,7 @@ namespace dae
 		void Update(float elapsedSec);
 
 		TileType GetTileType(float x, float y);
+		TileType GetTileType(float x1, float y1, float x2, float y2);
 
 		Level(const std::vector<int>& grid, int width, int height, int tileSize);
 		~Level();

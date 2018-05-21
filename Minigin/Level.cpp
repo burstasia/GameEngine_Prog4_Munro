@@ -57,6 +57,35 @@ namespace dae
 		return tile;
 	}
 
+	TileType Level::GetTileType(float x1, float y1, float x2, float y2)
+	{
+		int index = (int)y1 / m_TileSize;
+		index *= m_NumTilesHorizontal;
+
+		index += (int)x1 / m_TileSize;
+
+		if (index < 0) index = 0;
+
+		int type1 = m_Grid.at(index);
+
+
+		index = (int)y2 / m_TileSize;
+		index *= m_NumTilesHorizontal;
+
+		index += (int)x2 / m_TileSize;
+
+		if (index < 0) index = 0;
+
+		int type2 = m_Grid.at(index);
+
+		//NEEDS WORK NICOLE FIX THIS AHHHHHHHHHHHHH
+		if (type1 == 1 || type2 == 1) return TileType::wall;
+		if (type1 == 2 && type2 == 2) return TileType::pill;
+		if (type1 == 0 && type2 == 0) return TileType::empty;
+
+		return TileType::empty;
+	}
+
 
 	Level::Level(const std::vector<int>& grid, int width, int height, int tileSize):
 		m_Grid(grid),

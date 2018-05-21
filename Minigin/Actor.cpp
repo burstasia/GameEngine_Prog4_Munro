@@ -32,23 +32,23 @@ namespace dae
 
 		if (m_Direction == Direc::down)
 		{
-			futureY -= 32;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY);
+			futureY += 32;
+			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
 		}
 		else if (m_Direction == Direc::up)
 		{
-			futureY += 32;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY);
+			futureY -= 1;
+			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
 		}
 		else if (m_Direction == Direc::left)
 		{
-			futureX -= 32;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY);
+			futureX -= 1;
+			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
 		}
 		else if (m_Direction == Direc::right)
 		{
 			futureX += 32;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY);
+			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
 		}
 		
 		if (tile == TileType::wall) m_Speed = 0.0f;

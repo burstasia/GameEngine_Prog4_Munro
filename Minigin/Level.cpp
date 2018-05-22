@@ -59,6 +59,10 @@ namespace dae
 
 	TileType Level::GetTileType(float x1, float y1, float x2, float y2)
 	{
+		//This overloaded version of get tile type gets the different tiles in the range of x and
+		//y values provided
+		//if one of the two tile types is a wall it will return wall
+		
 		int index = (int)y1 / m_TileSize;
 		index *= m_NumTilesHorizontal;
 

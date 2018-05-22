@@ -3,6 +3,22 @@
 #include <SDL.h>
 
 
+dae::InputManager::~InputManager()
+{
+	delete m_pUp;
+	m_pUp = nullptr;
+
+	delete m_pDown;
+	m_pDown = nullptr;
+
+	delete m_pLeft;
+	m_pLeft = nullptr;
+
+	delete m_pRight;
+	m_pRight = nullptr;
+
+}
+
 bool dae::InputManager::ProcessInput()
 {
 	ZeroMemory(&currentState, sizeof(XINPUT_STATE));

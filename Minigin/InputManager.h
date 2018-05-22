@@ -55,6 +55,7 @@ namespace dae
 	class InputManager final : public Singleton<InputManager>
 	{
 	public:
+		virtual ~InputManager() override;
 		bool ProcessInput();
 		bool IsPressed(ControllerButton button) const;
 		Command* HandleInput();

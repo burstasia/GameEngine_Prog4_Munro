@@ -1,7 +1,7 @@
 #pragma once
 #include <XInput.h>
 #include "Singleton.h"
-#include "Actor.h"
+#include "./Objects/Actor.h"
 #include <map>
 
 class Command

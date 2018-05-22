@@ -2,7 +2,7 @@
 #include "MiniginPCH.h"
 #include "BaseComponent.h"
 #include "./TransformComponent.h"
-#include "../GameObject.h"
+#include "../Objects/GameObject.h"
 
 namespace dae
 {

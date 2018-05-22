@@ -1,6 +1,6 @@
 #include "MiniginPCH.h"
 #include "Scene.h"
-#include "GameObject.h"
+#include "./Objects/GameObject.h"
 #include "Level.h"
 #include "LevelLoader.h"
 

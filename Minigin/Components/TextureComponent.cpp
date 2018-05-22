@@ -3,7 +3,7 @@
 #include "./BaseComponent.h"
 #include "../ResourceManager.h"
 #include "../Renderer.h"
-#include "GameObject.h"
+#include "../Objects/GameObject.h"
 #include <SDL.h>
 namespace dae
 {

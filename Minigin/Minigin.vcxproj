@@ -193,10 +193,10 @@ xcopy $(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll $(OutputPath) /R /Y</Command
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Actor.h" />
+    <ClInclude Include="Objects\Actor.h" />
     <ClInclude Include="Components\BaseComponent.h" />
     <ClInclude Include="Font.h" />
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Objects\GameObject.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="LevelLoader.h" />
@@ -218,10 +218,10 @@ xcopy $(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll $(OutputPath) /R /Y</Command
     <ClInclude Include="Components\TransformComponent.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="Objects\Actor.cpp" />
     <ClCompile Include="Components\BaseComponent.cpp" />
     <ClCompile Include="Font.cpp" />
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Objects\GameObject.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="LevelLoader.cpp" />

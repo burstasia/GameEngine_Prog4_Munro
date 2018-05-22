@@ -27,9 +27,12 @@ namespace dae
 	void Actor::Update(float elapsedSec)
 	{
 		if (m_IsEnemy) EnemyMovement(elapsedSec);
-		else NormalMovement(elapsedSec);
+		else
+		{
+			NormalMovement(elapsedSec);
 
-		SetPosition(elapsedSec, m_Speed);
+			SetPosition(elapsedSec, m_Speed);
+		}
 		
 		GameObject::Update(elapsedSec);
 	}
@@ -60,12 +63,12 @@ namespace dae
 		switch (m_Direction)
 		{
 		case 0:
-			futureY += 32;
+			futureY -= 1;
 			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
 			break;
 
 		case 1:
-			futureY -= 1;
+			futureY += 32;
 			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
 			break;
 
@@ -110,6 +113,7 @@ namespace dae
 
 		NormalMovement(elapsedSec);
 
+		SetPosition(elapsedSec, m_Speed);
 		if (m_Speed <= 0.0f)
 		{
 			m_IsGoalSet = false;

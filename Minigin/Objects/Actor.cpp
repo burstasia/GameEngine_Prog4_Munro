@@ -39,7 +39,7 @@ namespace dae
 
 	void Actor::SetDirection(const Direc direction)
 	{
-		m_Direction = direction;
+		if(!m_IsEnemy)m_Direction = direction;
 	}
 
 	float Actor::GetSpeed()
@@ -85,6 +85,7 @@ namespace dae
 
 
 		if (tile == TileType::wall) m_Speed = 0.0f;
+		else if (tile == TileType::pill) m_pScene.GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
 		else m_Speed = 50.0f;
 	}
 

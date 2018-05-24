@@ -12,6 +12,14 @@ namespace dae
 		return m_Texture;
 	}
 
+	void TextureComponent::SetTexture(const std::string & file, float posX, float posY)
+	{
+		m_PosX = posX;
+		m_PosY = posY;
+
+		m_Texture = ResourceManager::GetInstance().LoadTexture(file);
+	}
+
 	TextureComponent::TextureComponent(const std::string& file, float posX, float posY):
 		m_PosX(posX),
 		m_PosY(posY)

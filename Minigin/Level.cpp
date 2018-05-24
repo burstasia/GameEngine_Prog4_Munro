@@ -80,21 +80,26 @@ namespace dae
 
 		float2 pos = m_PositionsTiles.at(index);
 
+		auto temp = dynamic_cast<TextureComponent*>(m_pComponents.at(index));
 		switch (newTile)
 		{
 		case 0:
 			m_Grid.at(index) = 0;
-			m_pComponents.at(index) = new TextureComponent("../Data/empty.png", pos.x, pos.y);
+
+			temp->SetTexture("../Data/empty.png", pos.x, pos.y);
+			//m_pComponents.at(index) = new TextureComponent("../Data/empty.png", pos.x, pos.y);
 			break;
 
 		case 1:
 			m_Grid.at(index) = 1;
-			m_pComponents.at(index) = new TextureComponent("../Data/wall.png", pos.x, pos.y);
+			temp->SetTexture("../Data/wall.png", pos.x, pos.y);
+			//m_pComponents.at(index) = new TextureComponent("../Data/wall.png", pos.x, pos.y);
 			break;
 
 		case 2:
 			m_Grid.at(index) = 2;
-			m_pComponents.at(index) = new TextureComponent("../Data/pill.png", pos.x, pos.y);
+			temp->SetTexture("../Data/pill.png", pos.x, pos.y);
+			//m_pComponents.at(index) = new TextureComponent("../Data/pill.png", pos.x, pos.y);
 			break;
 		}
 

@@ -60,6 +60,12 @@ namespace dae
 
 		dae::TileType tile{};
 
+		//check if tile i am on is pill
+		if (!m_IsEnemy)
+		{
+			if(m_pScene.GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::pill) m_pScene.GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
+		}
+
 		switch (m_Direction)
 		{
 		case 0:
@@ -85,7 +91,6 @@ namespace dae
 
 
 		if (tile == TileType::wall) m_Speed = 0.0f;
-		else if (tile == TileType::pill) m_pScene.GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
 		else m_Speed = 50.0f;
 	}
 

@@ -9,6 +9,7 @@ namespace dae
 	{
 	public:
 		SDL_Texture * GetSDLTexture() const;
+		void SetTexture(const std::string& file, float posX, float posY);
 		explicit TextureComponent(const std::string& file, float posX, float posY);
 		~TextureComponent();
 

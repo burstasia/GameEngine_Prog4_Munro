@@ -14,6 +14,8 @@ namespace dae
 
 	BaseComponent::~BaseComponent()
 	{
+		//delete(m_pGameObject);
+		//m_pGameObject = nullptr;
 	}
 
 	GameObject * BaseComponent::GetGameObject() const

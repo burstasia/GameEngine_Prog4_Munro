@@ -49,5 +49,8 @@ void dae::Scene::LoadLevel(const std::string & path)
 	auto levelLoader = new LevelLoader();
 
 	m_pLevel = levelLoader->LoadLevel(path);
+
+	delete(levelLoader);
+	levelLoader = nullptr;
 }
 

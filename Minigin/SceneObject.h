@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Scene.h"
 
 namespace dae
 {
@@ -14,6 +14,7 @@ namespace dae
 
 		SceneObject(const Scene& scene): m_pScene(scene) {}
 		virtual ~SceneObject() = default;
+
 		SceneObject(const SceneObject& other) = delete;
 		SceneObject(SceneObject&& other) = delete;
 		SceneObject& operator=(const SceneObject& other) = delete;

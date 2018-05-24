@@ -29,12 +29,7 @@ namespace dae
 		//we have our index!
 		//return
 
-		int index = (int)y / m_TileSize;
-		index *= m_NumTilesHorizontal;
-
-		index += (int)x / m_TileSize;
-
-		if (index < 0) index = 0;
+		int index = GetIndex(x, y);
 
 		int type = m_Grid.at(index);
         
@@ -63,22 +58,11 @@ namespace dae
 		//y values provided
 		//if one of the two tile types is a wall it will return wall
 		
-		int index = (int)y1 / m_TileSize;
-		index *= m_NumTilesHorizontal;
-
-		index += (int)x1 / m_TileSize;
-
-		if (index < 0) index = 0;
+		int index = GetIndex(x1, y1);
 
 		int type1 = m_Grid.at(index);
 
-
-		index = (int)y2 / m_TileSize;
-		index *= m_NumTilesHorizontal;
-
-		index += (int)x2 / m_TileSize;
-
-		if (index < 0) index = 0;
+		index = GetIndex(x2, y2);
 
 		int type2 = m_Grid.at(index);
 
@@ -88,6 +72,32 @@ namespace dae
 		if (type1 == 0 && type2 == 0) return TileType::empty;
 
 		return TileType::empty;
+	}
+
+	void Level::ChangeTileType(float x, float y, TileType newTile)
+	{
+		int index = GetIndex(x, y);
+
+		float2 pos = m_PositionsTiles.at(index);
+
+		switch (newTile)
+		{
+		case 0:
+			m_Grid.at(index) = 0;
+			m_pComponents.at(index) = new TextureComponent("../Data/empty.png", pos.x, pos.y);
+			break;
+
+		case 1:
+			m_Grid.at(index) = 1;
+			m_pComponents.at(index) = new TextureComponent("../Data/wall.png", pos.x, pos.y);
+			break;
+
+		case 2:
+			m_Grid.at(index) = 2;
+			m_pComponents.at(index) = new TextureComponent("../Data/pill.png", pos.x, pos.y);
+			break;
+		}
+
 	}
 
 
@@ -114,6 +124,7 @@ namespace dae
 				int index = i + j;
 				int tileType = m_Grid.at(index);
 
+				m_PositionsTiles.push_back(float2((float)xPos, (float)xPos));
 				switch (tileType)
 				{
 				case 0:
@@ -142,6 +153,18 @@ namespace dae
 				pComp = 0;
 			}
 		}
+	}
+
+	int Level::GetIndex(float x, float y)
+	{
+		int index = (int)y / m_TileSize;
+		index *= m_NumTilesHorizontal;
+
+		index += (int)x / m_TileSize;
+
+		if (index < 0) index = 0;
+
+		return index;
 	}
 }
 

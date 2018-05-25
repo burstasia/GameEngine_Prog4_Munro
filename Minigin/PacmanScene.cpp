@@ -13,14 +13,16 @@ PacmanScene::PacmanScene()
 {
 	LoadLevel("../Data/level/level.json");
 	m_pPacman = std::make_shared<Pacman>(this);
-
-	//auto pac = std::make_shared<Pacman>(this);
-	//SceneManager::GetInstance().AddScene(*this);
 	Add(m_pPacman);
 
 	m_pGhost_01 = std::make_shared<Ghost>(this);
 	Add(m_pGhost_01);
 
+	m_pGhost_02 = std::make_shared<Ghost>(this);
+	Add(m_pGhost_02);
+
+	m_pGhost_03 = std::make_shared<Ghost>(this);
+	Add(m_pGhost_03);
 }
 
 
@@ -50,4 +52,6 @@ void dae::PacmanScene::Init()
 {
 	m_pPacman->Init();
 	m_pGhost_01->Init("ghost_01.png");
+	m_pGhost_02->Init("ghost_02.png");
+	m_pGhost_03->Init("ghost_03.png");
 }

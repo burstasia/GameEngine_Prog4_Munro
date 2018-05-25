@@ -86,19 +86,19 @@ namespace dae
 		case 0:
 			m_Grid.at(index) = 0;
 
-			temp->SetTexture("../Data/empty.png", pos.x, pos.y);
+			temp->SetTexture("empty.png", pos.x, pos.y);
 			//m_pComponents.at(index) = new TextureComponent("../Data/empty.png", pos.x, pos.y);
 			break;
 
 		case 1:
 			m_Grid.at(index) = 1;
-			temp->SetTexture("../Data/wall.png", pos.x, pos.y);
+			temp->SetTexture("wall.png", pos.x, pos.y);
 			//m_pComponents.at(index) = new TextureComponent("../Data/wall.png", pos.x, pos.y);
 			break;
 
 		case 2:
 			m_Grid.at(index) = 2;
-			temp->SetTexture("../Data/pill.png", pos.x, pos.y);
+			temp->SetTexture("pill.png", pos.x, pos.y);
 			//m_pComponents.at(index) = new TextureComponent("../Data/pill.png", pos.x, pos.y);
 			break;
 		}
@@ -168,6 +168,8 @@ namespace dae
 		index += (int)x / m_TileSize;
 
 		if (index < 0) index = 0;
+
+		if (index > m_Grid.size()) index = (int)m_Grid.size();
 
 		return index;
 	}

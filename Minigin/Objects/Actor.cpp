@@ -63,7 +63,10 @@ namespace dae
 		//check if tile i am on is pill
 		if (!m_IsEnemy)
 		{
-			if(m_pScene->GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::pill) m_pScene->GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
+			if (m_pScene->GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::pill)
+			{
+				m_pScene->GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
+			}
 		}
 
 		switch (m_Direction)
@@ -154,8 +157,8 @@ namespace dae
 		dae::TileType tile_left{};
 		dae::TileType tile_right{};
 
-		float x = GetTransform()->GetPosition().x;
-		float y = GetTransform()->GetPosition().y;
+		float x = GetTransform()->GetPosition().x + 16;
+		float y = GetTransform()->GetPosition().y + 16;
 
 		tile_forwards = m_pScene->GetLevel()->GetTileType(x, y - 32.0f);
 		tile_backwards = m_pScene->GetLevel()->GetTileType(x, y + 32.0f);

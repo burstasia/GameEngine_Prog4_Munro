@@ -18,6 +18,8 @@ namespace dae
 		std::shared_ptr<Pacman> m_pPacman;
 
 		std::shared_ptr<Ghost> m_pGhost_01;
+		std::shared_ptr<Ghost> m_pGhost_02;
+		std::shared_ptr<Ghost> m_pGhost_03;
 	};
 }
 

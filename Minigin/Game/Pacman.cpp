@@ -3,8 +3,8 @@
 #include "../Components/SpriteComponent.h"
 using namespace dae;
 
-Pacman::Pacman(Scene & scene):
-	Actor(scene, false)
+Pacman::Pacman(Scene* pScene):
+	Actor(pScene, false)
 {
 	
 

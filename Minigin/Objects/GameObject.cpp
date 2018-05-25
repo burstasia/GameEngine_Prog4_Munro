@@ -7,8 +7,8 @@
 #include "Scene.h"
 namespace dae
 {
-	GameObject::GameObject(const Scene& scene) :
-		SceneObject(scene)
+	GameObject::GameObject(Scene* pScene) :
+		SceneObject(pScene)
 	{
 		m_Transform.m_pGameObject = this;
 	}

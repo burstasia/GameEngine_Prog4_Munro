@@ -12,7 +12,7 @@ namespace dae
 		virtual void Update(float elapsedSec) = 0;
 		virtual void Render() const = 0;
 
-		SceneObject(const Scene& scene): m_pScene(scene) {}
+		SceneObject(Scene* pScene): m_pScene(pScene) {}
 		virtual ~SceneObject() = default;
 
 		SceneObject(const SceneObject& other) = delete;
@@ -22,6 +22,6 @@ namespace dae
 
 
 	protected:
-		const Scene & m_pScene;
+		Scene *m_pScene;
 	};
 }

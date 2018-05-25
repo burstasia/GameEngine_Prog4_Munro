@@ -7,7 +7,7 @@ namespace dae
 	class Pacman final : public Actor
 	{
 	public:
-		Pacman(Scene & scene);
+		Pacman(Scene* pScene);
 		~Pacman();
 
 		void Update(float elapsedSec);

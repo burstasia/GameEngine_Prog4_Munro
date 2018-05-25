@@ -10,6 +10,8 @@ namespace dae
 	{
 		friend Scene& SceneManager::CreateScene(const std::string& name);
 	public:
+		explicit Scene(const std::string& name);
+
 		void Add(const std::shared_ptr<SceneObject>& object);
 
 		void Update(float elapsedSec);
@@ -26,7 +28,7 @@ namespace dae
 		Scene& operator=(Scene&& other) = delete;
 
 	private: 
-		explicit Scene(const std::string& name);
+		
 
 		std::string mName{};
 		std::vector < std::shared_ptr<SceneObject>> mObjects{};

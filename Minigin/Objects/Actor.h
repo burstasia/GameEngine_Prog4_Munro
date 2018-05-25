@@ -16,7 +16,7 @@ namespace dae
 	class Actor : public dae::GameObject
 	{
 	public:
-		Actor(const Scene& scene, bool isEnemy);
+		Actor(Scene* pScene, bool isEnemy);
 		~Actor();
 
 		void Update(float elapsedSec) override;

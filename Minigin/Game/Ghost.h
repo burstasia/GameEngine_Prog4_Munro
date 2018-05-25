@@ -6,7 +6,7 @@ namespace dae
 	class Ghost final: public Actor
 	{
 	public:
-		Ghost(Scene& scene);
+		Ghost(Scene* pScene);
 		~Ghost();
 
 		void Update(float elapsedSec);

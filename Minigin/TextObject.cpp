@@ -8,8 +8,8 @@
 #include "Texture2D.h"
 #include "Scene.h"
 
-dae::TextObject::TextObject(const std::string& text, std::shared_ptr<Font> font, const Scene& scene)
-	: SceneObject(scene),mNeedsUpdate(true), mText(text), mFont(font), mTexture(nullptr)
+dae::TextObject::TextObject(const std::string& text, std::shared_ptr<Font> font, Scene* pScene)
+	: SceneObject(pScene),mNeedsUpdate(true), mText(text), mFont(font), mTexture(nullptr)
 { }
 
 void dae::TextObject::Update(float elapsedSec)

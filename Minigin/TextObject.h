@@ -18,7 +18,7 @@ namespace dae
 		void SetPosition(float x, float y);
 
 
-		explicit TextObject(const std::string& text, std::shared_ptr<Font> font, const Scene& scene);
+		explicit TextObject(const std::string& text, std::shared_ptr<Font> font, Scene* pScene);
 		virtual ~TextObject() = default;
 		TextObject(const TextObject& other) = delete;
 		TextObject(TextObject&& other) = delete;

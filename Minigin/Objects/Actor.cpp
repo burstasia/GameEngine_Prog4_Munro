@@ -7,8 +7,8 @@
 
 namespace dae
 {
-	Actor::Actor(const Scene& scene, bool isEnemy) :
-		GameObject(scene),
+	Actor::Actor(Scene* pScene, bool isEnemy) :
+		GameObject(pScene),
 		m_Direction(Direc::right),
 		m_Speed(50.0f),
 		m_IsEnemy(isEnemy),
@@ -63,29 +63,29 @@ namespace dae
 		//check if tile i am on is pill
 		if (!m_IsEnemy)
 		{
-			if(m_pScene.GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::pill) m_pScene.GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
+			if(m_pScene->GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::pill) m_pScene->GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
 		}
 
 		switch (m_Direction)
 		{
 		case 0:
 			futureY -= 1;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
+			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
 			break;
 
 		case 1:
 			futureY += 32;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
+			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
 			break;
 
 		case 2:
 			futureX -= 1;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
+			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
 			break;
 
 		case 3:
 			futureX += 32;
-			tile = m_pScene.GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
+			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
 			break;
 		}
 
@@ -157,10 +157,10 @@ namespace dae
 		float x = GetTransform()->GetPosition().x;
 		float y = GetTransform()->GetPosition().y;
 
-		tile_forwards = m_pScene.GetLevel()->GetTileType(x, y - 32.0f);
-		tile_backwards = m_pScene.GetLevel()->GetTileType(x, y + 32.0f);
-		tile_left = m_pScene.GetLevel()->GetTileType(x - 32.0f, y);
-		tile_right = m_pScene.GetLevel()->GetTileType(x + 32.0f, y);
+		tile_forwards = m_pScene->GetLevel()->GetTileType(x, y - 32.0f);
+		tile_backwards = m_pScene->GetLevel()->GetTileType(x, y + 32.0f);
+		tile_left = m_pScene->GetLevel()->GetTileType(x - 32.0f, y);
+		tile_right = m_pScene->GetLevel()->GetTileType(x + 32.0f, y);
 
 		std::vector<Direc> tempDirecVec;
 

@@ -4,8 +4,8 @@
 
 using namespace dae;
 
-Ghost::Ghost(Scene& scene):
-	Actor(scene, true)
+Ghost::Ghost(Scene* pScene):
+	Actor(pScene, true)
 {
 }
 

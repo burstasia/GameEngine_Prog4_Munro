@@ -12,6 +12,7 @@ namespace dae
 		void AddScene(std::shared_ptr<Scene> scene);
 		void Update(float elapsedSec);
 		void Render();
+		void Init();
 
 	private:
 		std::vector<std::shared_ptr<Scene>> mScenes;

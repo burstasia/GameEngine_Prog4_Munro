@@ -11,9 +11,16 @@ PacmanScene::PacmanScene()
 	:Scene("pacmanScene")
 
 {
-	auto pac = std::make_shared<Pacman>(this);
+	LoadLevel("../Data/level/level.json");
+	m_pPacman = std::make_shared<Pacman>(this);
+
+	//auto pac = std::make_shared<Pacman>(this);
 	//SceneManager::GetInstance().AddScene(*this);
-	Add(pac);
+	Add(m_pPacman);
+
+	m_pGhost_01 = std::make_shared<Ghost>(this);
+	Add(m_pGhost_01);
+
 }
 
 
@@ -24,9 +31,14 @@ PacmanScene::~PacmanScene()
 void dae::PacmanScene::Update(float elapsedSec)
 {
 	UNREFERENCED_PARAMETER(elapsedSec);
+
+	//HANDLE INPUT FOR PACMAN
+	InputManager::GetInstance().ProcessInput();
+
 	auto command  = InputManager::GetInstance().HandleInput();
 	if (command) command->Execute(m_pPacman);
 
+	Scene::Update(elapsedSec);
 
 }
 
@@ -36,5 +48,6 @@ void dae::PacmanScene::Render() const
 
 void dae::PacmanScene::Init()
 {
-
+	m_pPacman->Init();
+	m_pGhost_01->Init("ghost_01.png");
 }

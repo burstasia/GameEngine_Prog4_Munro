@@ -10,7 +10,7 @@ namespace dae
 		PacmanScene();
 		~PacmanScene();
 
-		void Update(float elapsedSec);
+		void Update(float elapsedSec) override;
 		void Render() const;
 		void Init();
 

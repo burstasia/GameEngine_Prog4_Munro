@@ -14,8 +14,10 @@ namespace dae
 
 		void Add(const std::shared_ptr<SceneObject>& object);
 
-		void Update(float elapsedSec);
+		virtual void Update(float elapsedSec);
 		void Render() const;
+		virtual void Init() {}
+
 
 		//getter for level
 		void LoadLevel(const std::string& path);

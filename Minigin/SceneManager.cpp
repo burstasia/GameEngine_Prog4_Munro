@@ -19,6 +19,14 @@ void dae::SceneManager::Render()
 	}
 }
 
+void dae::SceneManager::Init()
+{
+	for (const auto scene : mScenes)
+	{
+		scene->Init();
+	}
+}
+
 dae::Scene& dae::SceneManager::CreateScene(const std::string& name)
 {
 	const auto scene = std::shared_ptr<Scene>(new Scene(name));

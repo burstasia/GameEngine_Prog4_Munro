@@ -28,8 +28,13 @@ namespace dae
 		std::vector<float2> m_EnemyPositions;
 
 		float2 m_StartPos;
-
 		PacmanScene* m_CurrScene;
+		bool m_IsHit;
+		int m_Lives;
+
+		//HELPER FUNCTIONS
+		void CheckCollisionEnemies();
+		void ResetPacman();
 	};
 }
 

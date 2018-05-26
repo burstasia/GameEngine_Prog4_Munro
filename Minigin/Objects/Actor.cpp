@@ -134,19 +134,19 @@ namespace dae
 		switch (m_Direction)
 		{
 		case 0:
-			GetTransform()->SetPosition(0.0f, -1.0f * (elapsedSec * speed), 0.0f);
+			GetTransform()->ChangePosition(0.0f, -1.0f * (elapsedSec * speed), 0.0f);
 			break;
 
 		case 1:
-			GetTransform()->SetPosition(0.0f, (elapsedSec * speed), 0.0f);
+			GetTransform()->ChangePosition(0.0f, (elapsedSec * speed), 0.0f);
 			break;
 
 		case 2:
-			GetTransform()->SetPosition(-1.0f *(elapsedSec * speed), 0.0f, 0.0f);
+			GetTransform()->ChangePosition(-1.0f *(elapsedSec * speed), 0.0f, 0.0f);
 			break;
 
 		case 3:
-			GetTransform()->SetPosition(((elapsedSec * speed)), 0.0f, 0.0f);
+			GetTransform()->ChangePosition(((elapsedSec * speed)), 0.0f, 0.0f);
 			break;
 		}
 	}

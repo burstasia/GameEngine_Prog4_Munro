@@ -1,12 +1,15 @@
 #include "MiniginPCH.h"
 #include "Pacman.h"
 #include "../Components/SpriteComponent.h"
+#include "../PacmanScene.h"
 using namespace dae;
 
 Pacman::Pacman(Scene* pScene):
-	Actor(pScene, false)
+	Actor(pScene, false),
+	m_StartPos(256,256)
 {
-	
+	m_CurrScene = dynamic_cast<PacmanScene*>(pScene);
+
 
 }
 
@@ -17,6 +20,8 @@ Pacman::~Pacman()
 
 void Pacman::Update(float elapsedSec)
 {
+	m_EnemyPositions = m_CurrScene->GetEnemyPositions();
+
 	Actor::Update(elapsedSec);
 }
 

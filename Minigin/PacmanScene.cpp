@@ -7,7 +7,7 @@
 
 using namespace dae;
 
-PacmanScene::PacmanScene()
+dae::PacmanScene::PacmanScene()
 	:Scene("pacmanScene")
 
 {
@@ -26,7 +26,7 @@ PacmanScene::PacmanScene()
 }
 
 
-PacmanScene::~PacmanScene()
+dae::PacmanScene::~PacmanScene()
 {
 }
 
@@ -41,7 +41,6 @@ void dae::PacmanScene::Update(float elapsedSec)
 	if (command) command->Execute(m_pPacman);
 
 	Scene::Update(elapsedSec);
-
 }
 
 void dae::PacmanScene::Render() const
@@ -54,4 +53,17 @@ void dae::PacmanScene::Init()
 	m_pGhost_01->Init("ghost_01.png");
 	m_pGhost_02->Init("ghost_02.png");
 	m_pGhost_03->Init("ghost_03.png");
+
+	m_GhostPositions.push_back(float2((int)m_pGhost_01->GetTransform()->GetPosition().x, (int)m_pGhost_01->GetTransform()->GetPosition().y));
+	m_GhostPositions.push_back(float2((int)m_pGhost_02->GetTransform()->GetPosition().x, (int)m_pGhost_02->GetTransform()->GetPosition().y));
+	m_GhostPositions.push_back(float2((int)m_pGhost_03->GetTransform()->GetPosition().x, (int)m_pGhost_03->GetTransform()->GetPosition().y));
+}
+
+std::vector<float2>& dae::PacmanScene::GetEnemyPositions()
+{
+	m_GhostPositions.at(0) = float2((int)m_pGhost_01->GetTransform()->GetPosition().x, (int)m_pGhost_01->GetTransform()->GetPosition().y);
+	m_GhostPositions.at(1) = float2((int)m_pGhost_02->GetTransform()->GetPosition().x, (int)m_pGhost_02->GetTransform()->GetPosition().y);
+	m_GhostPositions.at(2) = float2((int)m_pGhost_03->GetTransform()->GetPosition().x, (int)m_pGhost_03->GetTransform()->GetPosition().y);
+
+	return m_GhostPositions;
 }

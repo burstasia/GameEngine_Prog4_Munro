@@ -29,6 +29,10 @@ namespace dae
 		TileType GetTileType(float x, float y);
 		TileType GetTileType(float x1, float y1, float x2, float y2);
 		void ChangeTileType(float x, float y, TileType newTile);
+
+		int GetWidth();
+		int GetHeight();
+
 		Level(const std::vector<int>& grid, int width, int height, int tileSize);
 		~Level();
 

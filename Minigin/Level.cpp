@@ -105,6 +105,16 @@ namespace dae
 
 	}
 
+	int Level::GetWidth()
+	{
+		return m_Width;
+	}
+
+	int Level::GetHeight()
+	{
+		return m_Height;
+	}
+
 
 	Level::Level(const std::vector<int>& grid, int width, int height, int tileSize):
 		m_Grid(grid),
@@ -162,6 +172,15 @@ namespace dae
 
 	int Level::GetIndex(float x, float y)
 	{
+		if (x > m_Width)
+		{
+			x = (float)m_Width;
+		}
+		if (y > m_Height)
+		{
+			y = (float)m_Height;
+		}
+
 		int index = (int)y / m_TileSize;
 		index *= m_NumTilesHorizontal;
 
@@ -169,7 +188,10 @@ namespace dae
 
 		if (index < 0) index = 0;
 
-		if (index > m_Grid.size()) index = (int)m_Grid.size();
+		if (index > m_Grid.size())
+		{
+			index = (int)m_Grid.size();
+		}
 
 		return index;
 	}

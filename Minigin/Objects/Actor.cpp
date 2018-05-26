@@ -160,6 +160,11 @@ namespace dae
 		float x = GetTransform()->GetPosition().x + 16;
 		float y = GetTransform()->GetPosition().y + 16;
 
+		if (x > (float)m_pScene->GetLevel()->GetWidth()) x = (float)m_pScene->GetLevel()->GetWidth();
+		if (x < 0) x = 0;
+		if (y > (float)m_pScene->GetLevel()->GetHeight()) y = (float)m_pScene->GetLevel()->GetHeight();
+		if (y < 0) y = 0;
+
 		tile_forwards = m_pScene->GetLevel()->GetTileType(x, y - 32.0f);
 		tile_backwards = m_pScene->GetLevel()->GetTileType(x, y + 32.0f);
 		tile_left = m_pScene->GetLevel()->GetTileType(x - 32.0f, y);

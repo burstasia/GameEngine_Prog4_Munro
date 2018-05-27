@@ -13,6 +13,7 @@ namespace dae
 		void Render() const;
 		void Init(const std::string& fileName);
 
+		void ResetGhost();
 
 	};
 }

@@ -1,6 +1,7 @@
 #include "MiniginPCH.h"
 #include "Pacman.h"
 #include "../Components/SpriteComponent.h"
+#include "Ghost.h"
 #include "../PacmanScene.h"
 using namespace dae;
 
@@ -69,27 +70,64 @@ void dae::Pacman::CheckCollisionEnemies()
 	float y = GetTransform()->GetPosition().y;
 	float deltaY = GetTransform()->GetPosition().y + 32.0f;
 
-	for (size_t i = 0; i < m_EnemyPositions.size(); i++)
+	for (size_t i = 0; i < m_CurrScene->GetEnemies().size(); i++)
 	{
 		if (!m_IsHit)
 		{
-			float xEnemy = (float)m_EnemyPositions.at(i).x;
-			float deltaXEnemy = (float)m_EnemyPositions.at(i).x + 32;
+			float xEnemy = (float)m_CurrScene->GetEnemies().at(i)->GetTransform()->GetPosition().x;
+			float deltaXEnemy = (float)m_CurrScene->GetEnemies().at(i)->GetTransform()->GetPosition().x + 32;
 
-			float yEnemy = (float)m_EnemyPositions.at(i).y;
-			float deltaYEnemy = (float)m_EnemyPositions.at(i).y + 32;
+			float yEnemy = (float)m_CurrScene->GetEnemies().at(i)->GetTransform()->GetPosition().y;
+			float deltaYEnemy = (float)m_CurrScene->GetEnemies().at(i)->GetTransform()->GetPosition().y + 32;
 
 			if ((x <= xEnemy && xEnemy <= deltaX) || (x <= deltaXEnemy && deltaXEnemy <= deltaX))
 			{
 				if ((y <= yEnemy && yEnemy <= deltaY) || (y <= deltaYEnemy && deltaYEnemy <= deltaY))
 				{
-					m_IsHit = true;
-					ResetPacman();
+					if (Actor::GetInvincible() == false)
+					{
+						m_IsHit = true;
+						ResetPacman();
+					}
+					else
+					{
+						m_CurrScene->GetEnemies().at(i)->ResetGhost();
+					}
 				}
 			}
 		}
-			
 	}
+
+	
+
+	//for (size_t i = 0; i < m_EnemyPositions.size(); i++)
+	//{
+	//	if (!m_IsHit)
+	//	{
+	//		float xEnemy = (float)m_EnemyPositions.at(i).x;
+	//		float deltaXEnemy = (float)m_EnemyPositions.at(i).x + 32;
+
+	//		float yEnemy = (float)m_EnemyPositions.at(i).y;
+	//		float deltaYEnemy = (float)m_EnemyPositions.at(i).y + 32;
+
+	//		if ((x <= xEnemy && xEnemy <= deltaX) || (x <= deltaXEnemy && deltaXEnemy <= deltaX))
+	//		{
+	//			if ((y <= yEnemy && yEnemy <= deltaY) || (y <= deltaYEnemy && deltaYEnemy <= deltaY))
+	//			{
+	//				if (Actor::GetInvincible() == false)
+	//				{
+	//					m_IsHit = true;
+	//					ResetPacman();
+	//				}
+	//				else
+	//				{
+
+	//				}
+	//			}
+	//		}
+	//	}
+	//		
+	//}
 
 }
 

@@ -15,6 +15,7 @@ namespace dae
 		void Render() const;
 		void Init();
 		std::vector<int2>& GetEnemyPositions();
+		std::vector<std::shared_ptr<Ghost>>& GetEnemies();
 		void UpdateHUD(int lives);
 	private:
 		std::shared_ptr<Pacman> m_pPacman;
@@ -26,6 +27,7 @@ namespace dae
 		std::shared_ptr<HUD> m_pHUD;
 
 		std::vector<int2> m_GhostPositions;
+		std::vector<std::shared_ptr<Ghost>> m_pGhostVector;
 	};
 }
 

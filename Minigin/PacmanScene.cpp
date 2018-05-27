@@ -74,6 +74,10 @@ void dae::PacmanScene::Init()
 	m_GhostPositions.push_back(int2((int)m_pGhost_01->GetTransform()->GetPosition().x, (int)m_pGhost_01->GetTransform()->GetPosition().y));
 	m_GhostPositions.push_back(int2((int)m_pGhost_02->GetTransform()->GetPosition().x, (int)m_pGhost_02->GetTransform()->GetPosition().y));
 	m_GhostPositions.push_back(int2((int)m_pGhost_03->GetTransform()->GetPosition().x, (int)m_pGhost_03->GetTransform()->GetPosition().y));
+
+	m_pGhostVector.push_back(m_pGhost_01);
+	m_pGhostVector.push_back(m_pGhost_02);
+	m_pGhostVector.push_back(m_pGhost_03);
 }
 
 std::vector<int2>& dae::PacmanScene::GetEnemyPositions()
@@ -83,6 +87,11 @@ std::vector<int2>& dae::PacmanScene::GetEnemyPositions()
 	m_GhostPositions.at(2) = int2((int)m_pGhost_03->GetTransform()->GetPosition().x, (int)m_pGhost_03->GetTransform()->GetPosition().y);
 
 	return m_GhostPositions;
+}
+
+std::vector<std::shared_ptr<Ghost>>& dae::PacmanScene::GetEnemies()
+{
+	return m_pGhostVector;
 }
 
 void dae::PacmanScene::UpdateHUD(int lives)

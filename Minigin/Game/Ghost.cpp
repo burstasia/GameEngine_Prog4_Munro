@@ -29,3 +29,8 @@ void Ghost::Init(const std::string& fileName)
 	AddComponent(new SpriteComponent(fileName,256.0f, 224.0f, 2, 10));
 	GetTransform()->SetPosition(256.0f, 288.0f, 0.0f);
 }
+
+void dae::Ghost::ResetGhost()
+{
+	GetTransform()->SetPosition(256.0f, 288.0f, 0.0f);
+}

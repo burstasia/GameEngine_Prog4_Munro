@@ -10,7 +10,9 @@ namespace dae
 	Actor::Actor(Scene* pScene, bool isEnemy) :
 		GameObject(pScene),
 		m_Direction(Direc::right),
-		m_Speed(50.0f),
+		m_CurrSpeed(50.0f),
+		m_NormalSpeed(50.0f),
+		m_SuperSpeed(100.0f),
 		m_IsEnemy(isEnemy),
 		m_DistanceToTravel(0.0f),
 		m_DistanceTravelled(0.0f),
@@ -18,7 +20,10 @@ namespace dae
 		m_IsGoalSet(false),
 		m_Score(0),
 		m_PillScore(10),
-		m_SuperPillScore(15)
+		m_SuperPillScore(15),
+		m_IsInvincible(false),
+		m_TotalInvincibleTime(20.0f),
+		m_CurrInvincibleTime(0.0f)
 	{
 	}
 
@@ -34,7 +39,7 @@ namespace dae
 		{
 			NormalMovement(elapsedSec);
 
-			SetPosition(elapsedSec, m_Speed);
+			SetPosition(elapsedSec, m_CurrSpeed);
 		}
 		
 		GameObject::Update(elapsedSec);
@@ -47,7 +52,7 @@ namespace dae
 
 	float Actor::GetSpeed()
 	{
-		return m_Speed;
+		return m_CurrSpeed;
 	}
 
 	int Actor::GetScore()
@@ -55,9 +60,14 @@ namespace dae
 		return m_Score;
 	}
 
+	bool Actor::GetInvincible()
+	{
+		return m_IsInvincible;
+	}
+
 	void Actor::SetSpeed(float speed)
 	{
-		m_Speed = speed;
+		m_CurrSpeed = speed;
 	}
 
 	void Actor::NormalMovement(float elapsedSec)
@@ -76,23 +86,41 @@ namespace dae
 				m_pScene->GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
 				m_Score += m_PillScore;
 			}
+			else if (m_pScene->GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::bigPill)
+			{
+				m_pScene->GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
+				m_Score += m_SuperPillScore;
+				m_IsInvincible = true;
+			}
+
+			if (m_IsInvincible)
+			{
+				m_CurrInvincibleTime += elapsedSec;
+
+				if (m_CurrInvincibleTime > m_TotalInvincibleTime)
+				{
+					m_IsInvincible = false;
+					m_CurrInvincibleTime = 0.0f;
+				}
+			}
 		}
+		
 
 		switch (m_Direction)
 		{
 		case 0:
 			futureY -= 1;
-			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
+			tile = m_pScene->GetLevel()->GetTileType(futureX , futureY, futureX + 31, futureY);
 			break;
 
 		case 1:
 			futureY += 32;
-			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX + 31, futureY);
+			tile = m_pScene->GetLevel()->GetTileType(futureX , futureY, futureX + 31, futureY);
 			break;
 
 		case 2:
 			futureX -= 1;
-			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY, futureX, futureY + 31);
+			tile = m_pScene->GetLevel()->GetTileType(futureX, futureY , futureX, futureY + 31);
 			break;
 
 		case 3:
@@ -102,8 +130,15 @@ namespace dae
 		}
 
 
-		if (tile == TileType::wall) m_Speed = 0.0f;
-		else m_Speed = 50.0f;
+		if (tile == TileType::wall) m_CurrSpeed = 0.0f;
+		else if(!m_IsInvincible)
+		{
+			m_CurrSpeed = m_NormalSpeed;
+		}
+		else if (m_IsInvincible)
+		{
+			m_CurrSpeed = m_SuperSpeed;
+		}
 	}
 
 	void Actor::EnemyMovement(float elapsedSec)
@@ -120,7 +155,7 @@ namespace dae
 		}
 		if (m_DistanceTravelled <= m_DistanceToTravel)
 		{
-			m_DistanceTravelled += elapsedSec * m_Speed;
+			m_DistanceTravelled += elapsedSec * m_CurrSpeed;
 		}
 		if (m_DistanceTravelled >= m_DistanceToTravel)
 		{
@@ -131,8 +166,8 @@ namespace dae
 
 		NormalMovement(elapsedSec);
 
-		SetPosition(elapsedSec, m_Speed);
-		if (m_Speed <= 0.0f)
+		SetPosition(elapsedSec, m_CurrSpeed);
+		if (m_CurrSpeed <= 0.0f)
 		{
 			m_IsGoalSet = false;
 		}

@@ -9,7 +9,8 @@ namespace dae
 	{
 		empty = 0,
 		wall = 1,
-		pill = 2
+		pill = 2,
+		bigPill = 3
 	};
 
 	struct int2

@@ -24,15 +24,21 @@ namespace dae
 		void SetSpeed(float speed);
 		float GetSpeed();
 		int GetScore();
+		bool GetInvincible();
 
 	private:
 		Direc m_Direction;
-		float m_Speed;
+		float m_CurrSpeed;
+		float m_NormalSpeed;
+		float m_SuperSpeed;
 		bool m_IsEnemy;
 
 		int m_Score;
 		int m_PillScore;
 		int m_SuperPillScore;
+		bool m_IsInvincible;
+		float m_TotalInvincibleTime;
+		float m_CurrInvincibleTime;
 
 		//enemy variables
 		float m_DistanceToTravel;

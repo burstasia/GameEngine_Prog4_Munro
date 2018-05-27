@@ -46,6 +46,8 @@ namespace dae
 		case 2:
 			tile = TileType::pill;
 			break;
+		case 3:
+			tile = TileType::bigPill;
 		};
 
 
@@ -152,6 +154,10 @@ namespace dae
 
 				case 2:
 					m_pComponents.push_back(new TextureComponent("../Data/pill.png", (float)xPos, (float)yPos));
+					break;
+
+				case 3:
+					m_pComponents.push_back(new TextureComponent("../Data/pillBig.png", (float)xPos, (float)yPos));
 					break;
 				}
 			}

@@ -8,9 +8,9 @@ namespace dae
 {
 	class PacmanScene;
 
-	struct float2
+	struct int2
 	{
-		float2(int x, int y) : x(x), y(y) {}
+		int2(int x, int y) : x(x), y(y) {}
 		int x;
 		int y;
 	};
@@ -23,18 +23,28 @@ namespace dae
 		void Update(float elapsedSec);
 		void Render() const;
 		void Init();
+
+		void IncreaseScore(int amount);
+		int GetScore() const;
+		int GetLives() const;
+
+		bool GetDead();
 	private:
 		
-		std::vector<float2> m_EnemyPositions;
+		std::vector<int2> m_EnemyPositions;
 
-		float2 m_StartPos;
+		int2 m_StartPos;
 		PacmanScene* m_CurrScene;
 		bool m_IsHit;
 		int m_Lives;
+		int m_Score;
 
+		bool m_IsDead;
 		//HELPER FUNCTIONS
 		void CheckCollisionEnemies();
 		void ResetPacman();
+		void Death();
+
 	};
 }
 

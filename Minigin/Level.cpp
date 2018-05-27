@@ -78,7 +78,7 @@ namespace dae
 	{
 		int index = GetIndex(x, y);
 
-		float2 pos = m_PositionsTiles.at(index);
+		int2 pos = m_PositionsTiles.at(index);
 
 		auto temp = dynamic_cast<TextureComponent*>(m_pComponents.at(index));
 		switch (newTile)
@@ -139,7 +139,7 @@ namespace dae
 				int index = i + j;
 				int tileType = m_Grid.at(index);
 
-				m_PositionsTiles.push_back(float2((float)xPos, (float)xPos));
+				m_PositionsTiles.push_back(int2((float)xPos, (float)xPos));
 				switch (tileType)
 				{
 				case 0:

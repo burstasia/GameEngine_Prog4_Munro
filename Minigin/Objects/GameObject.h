@@ -33,6 +33,19 @@ namespace dae
 		GameObject& operator=(const GameObject& other) = delete;
 		GameObject& operator=(GameObject&& other) = delete;
 
+		template<class T> T* GetComponent()
+		{
+			const type_info& typeInfo = typeid(T);
+
+			for (auto *comp : m_pComponents)
+			{
+				if (comp && typeid(*comp) == typeInfo)
+				{
+					return static_cast<T*>(comp);
+				}
+			}
+			return nullptr;
+		}
 	private:
 		TransformComponent m_Transform;
 
@@ -47,6 +60,9 @@ namespace dae
 		//then I would be forced to set it to a nullptr 
 		//which I think is worse than having a vector of components that inherit 
 		//from BaseComponent
+
+	protected:
+
 		std::vector<BaseComponent*> m_pComponents;
 	};
 }

@@ -194,6 +194,7 @@ xcopy $(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll $(OutputPath) /R /Y</Command
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Game\Ghost.h" />
+    <ClInclude Include="Game\HUD.h" />
     <ClInclude Include="Objects\Actor.h" />
     <ClInclude Include="Components\BaseComponent.h" />
     <ClInclude Include="Font.h" />
@@ -222,6 +223,7 @@ xcopy $(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll $(OutputPath) /R /Y</Command
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game\Ghost.cpp" />
+    <ClCompile Include="Game\HUD.cpp" />
     <ClCompile Include="Objects\Actor.cpp" />
     <ClCompile Include="Components\BaseComponent.cpp" />
     <ClCompile Include="Font.cpp" />

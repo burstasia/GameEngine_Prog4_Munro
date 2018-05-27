@@ -177,6 +177,8 @@ namespace dae
 		if (tile_left != 1) tempDirecVec.push_back(Direc::left);
 		if (tile_right != 1) tempDirecVec.push_back(Direc::right);
 
+		if(tempDirecVec.size() == 0) tempDirecVec.push_back(Direc::down);
+
 		m_Direction = tempDirecVec.at((int)(rand() % tempDirecVec.size()));
 
 	}

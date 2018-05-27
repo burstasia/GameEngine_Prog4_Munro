@@ -12,9 +12,9 @@ namespace dae
 		pill = 2
 	};
 
-	struct float2
+	struct int2
 	{
-		float2(float x, float y): x(x), y(y) {}
+		int2(float x, float y): x(x), y(y) {}
 		float x;
 		float y;
 	};
@@ -48,7 +48,7 @@ namespace dae
 		int m_NumTilesVertical;
 
 		std::vector<BaseComponent*> m_pComponents;
-		std::vector<float2> m_PositionsTiles;
+		std::vector<int2> m_PositionsTiles;
 
 		int GetIndex(float x, float y);
 	};

@@ -2,6 +2,7 @@
 #include "./Scene.h"
 #include "./Game/Pacman.h"
 #include "./Game/Ghost.h"
+#include "./Game/HUD.h"
 namespace dae
 {
 	class PacmanScene final : public Scene
@@ -13,7 +14,8 @@ namespace dae
 		void Update(float elapsedSec) override;
 		void Render() const;
 		void Init();
-		std::vector<float2>& GetEnemyPositions();
+		std::vector<int2>& GetEnemyPositions();
+		void UpdateHUD(int lives);
 	private:
 		std::shared_ptr<Pacman> m_pPacman;
 
@@ -21,7 +23,9 @@ namespace dae
 		std::shared_ptr<Ghost> m_pGhost_02;
 		std::shared_ptr<Ghost> m_pGhost_03;
 
-		std::vector<float2> m_GhostPositions;
+		std::shared_ptr<HUD> m_pHUD;
+
+		std::vector<int2> m_GhostPositions;
 	};
 }
 

@@ -6,9 +6,10 @@ using namespace dae;
 
 Pacman::Pacman(Scene* pScene):
 	Actor(pScene, false),
-	m_StartPos(256,256),
+	m_StartPos(256,448),
 	m_IsHit(false),
-	m_Lives(3)
+	m_Lives(3),
+	m_IsDead(false)
 {
 	m_CurrScene = dynamic_cast<PacmanScene*>(pScene);
 
@@ -36,6 +37,26 @@ void dae::Pacman::Init()
 {
 	AddComponent(new SpriteComponent("pacman_move_anim.png", 50.0f, 50.0f, 5, 10));
 	GetTransform()->ChangePosition((float)m_StartPos.x, (float)m_StartPos.y, 0.0f);
+}
+
+void dae::Pacman::IncreaseScore(int amount)
+{
+	m_Score += amount;
+}
+
+int dae::Pacman::GetScore() const
+{
+	return m_Score;
+}
+
+int dae::Pacman::GetLives() const
+{
+	return m_Lives;
+}
+
+bool dae::Pacman::GetDead()
+{
+	return m_IsDead;
 }
 
 void dae::Pacman::CheckCollisionEnemies()
@@ -76,4 +97,17 @@ void dae::Pacman::ResetPacman()
 	GetTransform()->SetPosition((float)m_StartPos.x, (float)m_StartPos.y, 0);
 	m_IsHit = false;
 	m_Lives -= 1;
+
+	m_CurrScene->UpdateHUD(m_Lives);
+
+	if (m_Lives == 0)
+	{
+		m_IsDead = true;
+		Death();
+	}
+}
+
+void dae::Pacman::Death()
+{
+	GetTransform()->SetPosition(544.0f, 96.0f, 0.0f);
 }

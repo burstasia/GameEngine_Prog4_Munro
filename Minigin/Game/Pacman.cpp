@@ -98,36 +98,6 @@ void dae::Pacman::CheckCollisionEnemies()
 		}
 	}
 
-	
-
-	//for (size_t i = 0; i < m_EnemyPositions.size(); i++)
-	//{
-	//	if (!m_IsHit)
-	//	{
-	//		float xEnemy = (float)m_EnemyPositions.at(i).x;
-	//		float deltaXEnemy = (float)m_EnemyPositions.at(i).x + 32;
-
-	//		float yEnemy = (float)m_EnemyPositions.at(i).y;
-	//		float deltaYEnemy = (float)m_EnemyPositions.at(i).y + 32;
-
-	//		if ((x <= xEnemy && xEnemy <= deltaX) || (x <= deltaXEnemy && deltaXEnemy <= deltaX))
-	//		{
-	//			if ((y <= yEnemy && yEnemy <= deltaY) || (y <= deltaYEnemy && deltaYEnemy <= deltaY))
-	//			{
-	//				if (Actor::GetInvincible() == false)
-	//				{
-	//					m_IsHit = true;
-	//					ResetPacman();
-	//				}
-	//				else
-	//				{
-
-	//				}
-	//			}
-	//		}
-	//	}
-	//		
-	//}
 
 }
 

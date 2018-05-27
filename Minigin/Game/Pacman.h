@@ -39,6 +39,9 @@ namespace dae
 		int m_Lives;
 		int m_Score;
 
+		float m_CurrResetTime;
+		float m_TotalResetTime;
+
 		bool m_IsDead;
 		//HELPER FUNCTIONS
 		void CheckCollisionEnemies();

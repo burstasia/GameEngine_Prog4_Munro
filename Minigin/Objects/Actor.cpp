@@ -12,7 +12,7 @@ namespace dae
 		m_Direction(Direc::right),
 		m_CurrSpeed(50.0f),
 		m_NormalSpeed(50.0f),
-		m_SuperSpeed(100.0f),
+		m_SuperSpeed(80.0f),
 		m_IsEnemy(isEnemy),
 		m_DistanceToTravel(0.0f),
 		m_DistanceTravelled(0.0f),

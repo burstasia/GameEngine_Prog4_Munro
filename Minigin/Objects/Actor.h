@@ -23,11 +23,16 @@ namespace dae
 		void SetDirection(const Direc direction);
 		void SetSpeed(float speed);
 		float GetSpeed();
-		
+		int GetScore();
+
 	private:
 		Direc m_Direction;
 		float m_Speed;
 		bool m_IsEnemy;
+
+		int m_Score;
+		int m_PillScore;
+		int m_SuperPillScore;
 
 		//enemy variables
 		float m_DistanceToTravel;

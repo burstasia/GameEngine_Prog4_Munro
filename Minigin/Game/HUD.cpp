@@ -30,19 +30,23 @@ void dae::HUD::Render() const
 
 void dae::HUD::Init()
 {
-	AddComponent(new TextComponent("Lives : 3", "Lingua.otf", 20, 544.0f, 0.0f));
-	//AddComponent(new TextComponent("Score : 0", "Lingua.otf", 20, 544.0f, 64.0f));
+	AddComponent(new TextComponent("Lives : 3", "Lingua.otf", 20, 512.0f, 64.0f));
+	AddComponent(new TextComponent("Score : 0", "Lingua.otf", 20, 512.0f, 0.0f));
 }
 
-void dae::HUD::IncreaseScore(int score)
+void dae::HUD::SetScore(int score)
 {
 	UNREFERENCED_PARAMETER(score);
-	/*m_Score += score;
-	auto text = dynamic_cast<TextComponent*>(m_pComponents.at(1));
-	text->GetTransform()->SetPosition(544.0f, 0.0f, 0.0f);
-	std::string textasd{ "Score : "};
 
-	text->SetText(textasd);*/
+	if (score != m_Score)
+	{
+		m_Score = score;
+
+		auto text = dynamic_cast<TextComponent*>(m_pComponents.at(1));
+
+		text->SetText("Score : " + std::to_string(score));
+	}
+	
 }
 
 void dae::HUD::SetLives(int lives)
@@ -53,10 +57,8 @@ void dae::HUD::SetLives(int lives)
 	if (m_Lives >= 0)
 	{
 		auto text = dynamic_cast<TextComponent*>(m_pComponents.at(0));
-		text->GetTransform()->SetPosition(544.0f, 64.0f, 0.0f);
-		std::string textasdf{ "Lives : " + std::to_string(m_Lives) };
-
-		text->SetText(textasdf);
+		
+		text->SetText("Lives : " + std::to_string(m_Lives));
 	}
 	
 }

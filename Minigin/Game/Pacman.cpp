@@ -9,7 +9,8 @@ Pacman::Pacman(Scene* pScene):
 	m_StartPos(256,448),
 	m_IsHit(false),
 	m_Lives(3),
-	m_IsDead(false)
+	m_IsDead(false),
+	m_Score(0)
 {
 	m_CurrScene = dynamic_cast<PacmanScene*>(pScene);
 
@@ -26,6 +27,7 @@ void Pacman::Update(float elapsedSec)
 	m_EnemyPositions = m_CurrScene->GetEnemyPositions();
 	CheckCollisionEnemies();
 	Actor::Update(elapsedSec);
+	m_Score = Actor::GetScore();
 }
 
 void Pacman::Render() const

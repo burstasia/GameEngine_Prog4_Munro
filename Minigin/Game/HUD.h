@@ -13,7 +13,7 @@ namespace dae
 		void Render() const;
 		void Init();
 
-		void IncreaseScore(int score);
+		void SetScore(int score);
 		void SetLives(int lives);
 
 

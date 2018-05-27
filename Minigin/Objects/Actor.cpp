@@ -15,7 +15,10 @@ namespace dae
 		m_DistanceToTravel(0.0f),
 		m_DistanceTravelled(0.0f),
 		m_IsReachedGoal(false),
-		m_IsGoalSet(false)
+		m_IsGoalSet(false),
+		m_Score(0),
+		m_PillScore(10),
+		m_SuperPillScore(15)
 	{
 	}
 
@@ -47,6 +50,11 @@ namespace dae
 		return m_Speed;
 	}
 
+	int Actor::GetScore()
+	{
+		return m_Score;
+	}
+
 	void Actor::SetSpeed(float speed)
 	{
 		m_Speed = speed;
@@ -66,6 +74,7 @@ namespace dae
 			if (m_pScene->GetLevel()->GetTileType(futureX + 16, futureY + 16) == TileType::pill)
 			{
 				m_pScene->GetLevel()->ChangeTileType(futureX, futureY, TileType::empty);
+				m_Score += m_PillScore;
 			}
 		}
 

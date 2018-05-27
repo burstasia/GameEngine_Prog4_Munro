@@ -18,7 +18,8 @@ namespace dae
 
 
 		void SetText(const std::string& text);
-		
+		void SetPosition(float x, float y);
+
 		TextComponent(const TextComponent &) = delete;
 		TextComponent(TextComponent &&) = delete;
 		TextComponent & operator= (const TextComponent &) = delete;

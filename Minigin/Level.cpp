@@ -139,7 +139,7 @@ namespace dae
 				int index = i + j;
 				int tileType = m_Grid.at(index);
 
-				m_PositionsTiles.push_back(int2((float)xPos, (float)xPos));
+				m_PositionsTiles.push_back(int2((float)xPos, (float)yPos));
 				switch (tileType)
 				{
 				case 0:
@@ -190,7 +190,7 @@ namespace dae
 
 		if (index > m_Grid.size())
 		{
-			index = (int)m_Grid.size();
+			index = (int)m_Grid.size() - 1;
 		}
 
 		return index;

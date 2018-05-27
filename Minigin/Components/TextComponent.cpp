@@ -43,6 +43,11 @@ namespace dae
 		SDL_FreeSurface(surf);
 		mTexture = texture;
 	}
+	void TextComponent::SetPosition(float x, float y)
+	{
+		m_PosX = x;
+		m_PosY = y;
+	}
 	void TextComponent::Init()
 	{
 	}
@@ -50,8 +55,8 @@ namespace dae
 	{
 		UNREFERENCED_PARAMETER(elapsedSec);
 
-		m_PosX = m_pGameObject->GetTransform()->GetPosition().x;
-		m_PosY = m_pGameObject->GetTransform()->GetPosition().y;
+		//m_PosX = m_pGameObject->GetTransform()->GetPosition().x;
+		//m_PosY = m_pGameObject->GetTransform()->GetPosition().y;
 
 	}
 	void TextComponent::Render()

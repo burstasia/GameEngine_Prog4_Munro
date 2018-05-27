@@ -48,6 +48,8 @@ void dae::PacmanScene::Update(float elapsedSec)
 
 		auto command = InputManager::GetInstance().HandleInput();
 		if (command) command->Execute(m_pPacman);
+
+		m_pHUD->SetScore(m_pPacman->GetScore());
 	}
 	else
 	{

@@ -42,7 +42,7 @@ void dae::HUD::SetScore(int score)
 	{
 		m_Score = score;
 
-		auto text = dynamic_cast<TextComponent*>(m_pComponents.at(1));
+		auto text = static_cast<TextComponent*>(m_pComponents.at(1));
 
 		text->SetText("Score : " + std::to_string(score));
 	}
@@ -56,7 +56,7 @@ void dae::HUD::SetLives(int lives)
 
 	if (m_Lives >= 0)
 	{
-		auto text = dynamic_cast<TextComponent*>(m_pComponents.at(0));
+		auto text = static_cast<TextComponent*>(m_pComponents.at(0));
 		
 		text->SetText("Lives : " + std::to_string(m_Lives));
 	}

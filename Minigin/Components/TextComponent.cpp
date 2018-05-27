@@ -1,9 +1,9 @@
 #include "MiniginPCH.h"
 #include "TextComponent.h"
 
-#include "Renderer.h"
-#include "Font.h"
-#include "Texture2D.h"
+#include "../Renderer.h"
+#include "../Font.h"
+#include "../Texture2D.h"
 #include "../Objects/GameObject.h"
 #include "BaseComponent.h"
 #include "./TransformComponent.h"

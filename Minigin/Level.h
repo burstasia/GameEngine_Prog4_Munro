@@ -1,5 +1,5 @@
 #pragma once
-#include "./Components/BaseComponent.h"
+#include "./Components/TextureComponent.h"
 
 namespace dae
 {
@@ -48,7 +48,7 @@ namespace dae
 		int m_NumTilesHorizontal;
 		int m_NumTilesVertical;
 
-		std::vector<BaseComponent*> m_pComponents;
+		std::vector<TextureComponent*> m_pComponents;
 		std::vector<int2> m_PositionsTiles;
 
 		int GetIndex(float x, float y);

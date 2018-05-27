@@ -1,10 +1,10 @@
 #include "MiniginPCH.h"
 #include "GameObject.h"
-#include "ResourceManager.h"
-#include "Renderer.h"
-#include "./Components/TransformComponent.h"
-#include "./Components/BaseComponent.h"
-#include "Scene.h"
+#include "../ResourceManager.h"
+#include "../Renderer.h"
+#include "../Components/TransformComponent.h"
+#include "../Components/BaseComponent.h"
+#include "../Scene.h"
 namespace dae
 {
 	GameObject::GameObject(Scene* pScene) :

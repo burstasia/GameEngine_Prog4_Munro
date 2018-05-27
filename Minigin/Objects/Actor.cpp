@@ -1,8 +1,8 @@
 #include "MiniginPCH.h"
 #include "Actor.h"
-#include "./Components/TransformComponent.h"
-#include "./Scene.h"
-#include "./Level.h"
+#include "../Components/TransformComponent.h"
+#include "../Scene.h"
+#include "../Level.h"
 #include <map>
 
 namespace dae
@@ -214,14 +214,17 @@ namespace dae
 		tile_left = m_pScene->GetLevel()->GetTileType(x - 32.0f, y);
 		tile_right = m_pScene->GetLevel()->GetTileType(x + 32.0f, y);
 
-		std::vector<Direc> tempDirecVec;
+		std::vector<Direc> tempDirecVec{};
 
 		if (tile_forwards != 1) tempDirecVec.push_back(Direc::up);
 		if (tile_backwards != 1) tempDirecVec.push_back(Direc::down);
 		if (tile_left != 1) tempDirecVec.push_back(Direc::left);
 		if (tile_right != 1) tempDirecVec.push_back(Direc::right);
 
-		if(tempDirecVec.size() == 0) tempDirecVec.push_back(Direc::down);
+		if (tempDirecVec.size() == 0)
+		{
+			tempDirecVec.push_back(Direc::down);
+		}
 
 		m_Direction = tempDirecVec.at((int)(rand() % tempDirecVec.size()));
 

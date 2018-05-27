@@ -82,7 +82,7 @@ namespace dae
 
 		int2 pos = m_PositionsTiles.at(index);
 
-		auto temp = dynamic_cast<TextureComponent*>(m_pComponents.at(index));
+		auto temp = m_pComponents.at(index);
 		switch (newTile)
 		{
 		case 0:
@@ -131,9 +131,9 @@ namespace dae
 		int xPos{};
 
 		//create tile texture components
-		for (int i = 0; i < m_Grid.size(); i += m_NumTilesHorizontal)
+		for (int i = 0; i <(int) m_Grid.size(); i += m_NumTilesHorizontal)
 		{
-			for (int j = 0; j < m_NumTilesHorizontal; j++)
+			for (int j = 0; j < (int)m_NumTilesHorizontal; j++)
 			{
 				yPos = (i / m_NumTilesVertical) * m_TileSize;
 				xPos = j * m_TileSize;
@@ -194,7 +194,7 @@ namespace dae
 
 		if (index < 0) index = 0;
 
-		if (index > m_Grid.size())
+		if (index >= (int)m_Grid.size())
 		{
 			index = (int)m_Grid.size() - 1;
 		}

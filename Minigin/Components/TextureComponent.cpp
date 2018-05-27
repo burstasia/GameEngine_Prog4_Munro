@@ -17,6 +17,9 @@ namespace dae
 		m_PosX = posX;
 		m_PosY = posY;
 
+		if(m_Texture != nullptr)
+			SDL_DestroyTexture(m_Texture);
+
 		m_Texture = ResourceManager::GetInstance().LoadTexture(file);
 	}
 

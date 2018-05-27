@@ -4,9 +4,9 @@
 #include <glm/vec3.hpp>
 #pragma warning(pop)
 #include "BaseComponent.h"
-#include "ResourceManager.h"
-#include "Font.h"
-#include "Texture2D.h"
+#include "../ResourceManager.h"
+#include "../Font.h"
+#include "../Texture2D.h"
 
 namespace dae
 {

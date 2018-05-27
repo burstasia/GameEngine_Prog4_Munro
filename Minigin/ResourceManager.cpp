@@ -32,7 +32,8 @@ void dae::ResourceManager::Init(std::string&& dataPath)
 
 SDL_Texture* dae::ResourceManager::LoadTexture(const std::string& file)
 {
-	std::string fullPath = (mDataPath + file).c_str();
+	std::string fullPath{ mDataPath };
+	fullPath.append(file.c_str());// = (mDataPath + file).c_str();
 	SDL_Texture *texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
 	if (texture == nullptr) {
 		std::stringstream ss; ss << "Failed to load texture: " << SDL_GetError();

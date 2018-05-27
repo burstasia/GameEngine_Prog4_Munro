@@ -11,6 +11,7 @@ namespace dae
 		~SpriteComponent();
 
 		void SetPosition(float x, float y);
+		void SetAnimation(const std::string& file, int numFrames);
 
 		SpriteComponent(const SpriteComponent &) = delete;
 		SpriteComponent(SpriteComponent &&) = delete;

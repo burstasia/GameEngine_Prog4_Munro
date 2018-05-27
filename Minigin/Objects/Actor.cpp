@@ -23,7 +23,8 @@ namespace dae
 		m_SuperPillScore(15),
 		m_IsInvincible(false),
 		m_TotalInvincibleTime(20.0f),
-		m_CurrInvincibleTime(0.0f)
+		m_CurrInvincibleTime(0.0f),
+		m_IsDying(false)
 	{
 	}
 
@@ -37,9 +38,12 @@ namespace dae
 		if (m_IsEnemy) EnemyMovement(elapsedSec);
 		else
 		{
-			NormalMovement(elapsedSec);
+			if (!m_IsDying)
+			{
+				NormalMovement(elapsedSec);
 
-			SetPosition(elapsedSec, m_CurrSpeed);
+				SetPosition(elapsedSec, m_CurrSpeed);
+			}
 		}
 		
 		GameObject::Update(elapsedSec);
@@ -63,6 +67,11 @@ namespace dae
 	bool Actor::GetInvincible()
 	{
 		return m_IsInvincible;
+	}
+
+	void Actor::SetDying(bool dying)
+	{
+		m_IsDying = dying;
 	}
 
 	void Actor::SetSpeed(float speed)

@@ -10,8 +10,11 @@ Pacman::Pacman(Scene* pScene):
 	m_StartPos(256,448),
 	m_IsHit(false),
 	m_Lives(3),
+	m_IsDying(false),
 	m_IsDead(false),
-	m_Score(0)
+	m_Score(0),
+	m_CurrResetTime(0),
+	m_TotalResetTime(1.3f)
 {
 	m_CurrScene = dynamic_cast<PacmanScene*>(pScene);
 
@@ -26,7 +29,10 @@ Pacman::~Pacman()
 void Pacman::Update(float elapsedSec)
 {
 	m_EnemyPositions = m_CurrScene->GetEnemyPositions();
-	CheckCollisionEnemies();
+
+	if(!m_IsHit)CheckCollisionEnemies();
+	else ResetPacman(elapsedSec);
+
 	Actor::Update(elapsedSec);
 	m_Score = Actor::GetScore();
 }
@@ -87,7 +93,15 @@ void dae::Pacman::CheckCollisionEnemies()
 					if (Actor::GetInvincible() == false)
 					{
 						m_IsHit = true;
-						ResetPacman();
+
+						
+
+						auto temp = GetComponent<SpriteComponent>();
+
+						temp->SetAnimation("pacman_death.png", 13);
+
+						Actor::SetDying(true);
+
 					}
 					else
 					{
@@ -101,20 +115,33 @@ void dae::Pacman::CheckCollisionEnemies()
 
 }
 
-void dae::Pacman::ResetPacman()
+void dae::Pacman::ResetPacman(float elapsedSec)
 {
+	m_CurrResetTime += elapsedSec;
 
-	GetTransform()->SetPosition((float)m_StartPos.x, (float)m_StartPos.y, 0);
-	m_IsHit = false;
-	m_Lives -= 1;
 
-	m_CurrScene->UpdateHUD(m_Lives);
-
-	if (m_Lives == 0)
+	if (m_CurrResetTime >= m_TotalResetTime)
 	{
-		m_IsDead = true;
-		Death();
+		m_CurrResetTime = 0;
+		Actor::SetDying(false);
+
+		GetTransform()->SetPosition((float)m_StartPos.x, (float)m_StartPos.y, 0);
+		m_IsHit = false;
+		m_Lives -= 1;
+
+		m_CurrScene->UpdateHUD(m_Lives);
+
+		auto temp = GetComponent<SpriteComponent>();
+
+		temp->SetAnimation("pacman_move_anim.png", 5);
+
+		if (m_Lives == 0)
+		{
+			m_IsDead = true;
+			Death();
+		}
 	}
+	
 }
 
 void dae::Pacman::Death()

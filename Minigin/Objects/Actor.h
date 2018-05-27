@@ -26,6 +26,8 @@ namespace dae
 		int GetScore();
 		bool GetInvincible();
 
+		void SetDying(bool dying);
+
 	private:
 		Direc m_Direction;
 		float m_CurrSpeed;
@@ -39,6 +41,8 @@ namespace dae
 		bool m_IsInvincible;
 		float m_TotalInvincibleTime;
 		float m_CurrInvincibleTime;
+
+		bool m_IsDying;
 
 		//enemy variables
 		float m_DistanceToTravel;

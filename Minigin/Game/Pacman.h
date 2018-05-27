@@ -42,10 +42,11 @@ namespace dae
 		float m_CurrResetTime;
 		float m_TotalResetTime;
 
+		bool m_IsDying;
 		bool m_IsDead;
 		//HELPER FUNCTIONS
 		void CheckCollisionEnemies();
-		void ResetPacman();
+		void ResetPacman(float elapsedSec);
 		void Death();
 
 	};

@@ -39,6 +39,26 @@ namespace dae
 
 	}
 
+	void SpriteComponent::SetAnimation(const std::string & file, int numFrames)
+	{
+		if(m_Texture != nullptr)
+			SDL_DestroyTexture(m_Texture);
+
+		m_Texture = ResourceManager::GetInstance().LoadTexture(file);
+		m_Animating = true;
+
+		//Damn dummy values and warning levels are ruining my life
+		SDL_QueryTexture(m_Texture, NULL, NULL, &m_WidthTexture, &m_HeightTexture);
+
+		m_NumFrames = numFrames;
+
+		m_WidthFrame = m_WidthTexture / numFrames;
+		m_HeightFrame = m_HeightTexture;
+
+		m_CurrFrame = 0;
+
+	}
+
 	void SpriteComponent::Init()
 	{
 	}
